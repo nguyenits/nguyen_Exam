@@ -1,8 +1,8 @@
 class QuestionController < ApplicationController
 before_action :set_question, only: %i[ show edit update destroy ]
 before_action :authenticate_user!, only: [:index, :new]
+num_of_question = 100
   def index
-    @time_variable = 5.minute 
     num_of_question = params["Num_Question"].to_i
     @question = Question.order(:id)
   end
@@ -12,15 +12,13 @@ before_action :authenticate_user!, only: [:index, :new]
   def show  
   end
   def ScoreQuestion
-   @question = Question.all
+
+   @question = Question.order(:id)
   end
 
-def ScoreQuestion
-  @question = Question.all
-end
 
   def edit  
-
+    @question = Question.all
   end
 
   def create
