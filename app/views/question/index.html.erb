@@ -1,0 +1,109 @@
+<p id="notice"><%= notice %></p>
+<h1>Question</h1>
+<% score = 0%>
+  <div class="timer">
+	<div id="countdown"> 
+		<!-- display the countdown timer here -->
+     <script>
+      function countdownTimer() {
+   const difference = +new Date("2020-01-01") - +new Date();
+  let remaining = "Time's up!";
+
+  if (difference > 0) {
+    const parts = {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+    remaining = Object.keys(parts).map(part => {
+    return `${parts[part]} ${part}`;  
+    }).join(" ");
+  }
+
+  document.getElementById("countdown").innerHTML = remaining;
+  setInterval(countdownTimer, 1000);
+    </script>
+	</div>
+
+  <%if current_user.role== "admin" %>
+
+<table>
+  <thead>
+    <tr>
+   <th>ID</th>
+     <th>Question</th>
+     <th>Anser 1</th>
+     <th>Anser 2</th>
+     <th>Anser 3</th>
+     <th>Anser 4</th>
+     <th>Right anser</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @question.each do |question| %>
+      <tr>
+        <td><%= question.id %></td>
+        <td><%= question.quetion %></td>
+        <td><%= question.a1 %></td>
+        <td><%= question.a2 %></td>
+        <td><%= question.a3 %></td>
+        <td><%= question.a4 %></td>
+        <td><%= question.ans %></td>
+        <td><%= link_to 'Show', question %></td>
+        <td><%= link_to 'Edit', edit_question_path(question) %></td>
+        <td><%= link_to 'destroy', question, method: :delete, data: {confirm: 'Are you sure?'}%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Question', new_question_path %>
+<%end%>
+<%if user_signed_in?%>
+
+<div id='time'></div>
+<script>
+  ques.onload = function () {
+    var timer = <%= @time_variable.to_i %>;
+    display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+  
+  };
+</script>
+
+<form action="/question/ScoreQuestion" method = "get">
+
+ <%@question.each do |question|%> 
+ <%if question.id <= params["Num_Question"].to_i%>
+ <div class="quiz-container" id="quiz">
+    <div class="quiz-header">
+      <td>Question Number <%=question.id%>:<%= question.quetion %></td>
+      <ul>
+         <li>
+          <input type="radio" name="<%=question.id%>" id="a" value= "1" class="answer">
+          <td><%= question.a1 %></td>
+        </li>
+        <li>
+          <input type="radio" name="<%=question.id%>" id="b" value= "2" class="answer">
+          <td><%= question.a2 %></td>
+        </li>
+        <li>
+          <input type="radio" name="<%=question.id%>" id="c" value= "3" class="answer">
+          <td><%= question.a3%></td>
+        </li>
+        <li>
+          <input type="radio" name="<%=question.id%>" id="d" value= "4" class="answer">
+          <td><%= question.a4 %></td>
+        </li>
+      </ul>    
+      <%end%>
+     <% end %>
+    </div>
+    <button id="submit">Submit</button>
+  </div>
+  </form>
+  
+<% end%>
+<br>

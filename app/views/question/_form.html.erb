@@ -1,0 +1,40 @@
+
+<%= form_with(model: question) do |form| %>
+
+
+<h2>Enter user details</h2>
+   <div>
+    <%= form.label :quetion, style: "display: block" %>
+    <%= form.text_field :quetion %>
+  </div>
+
+  <div>
+    <%= form.label :a1, style: "display: block" %>
+    <%= form.text_field :a1 %>
+  </div>
+
+  <div>
+    <%= form.label :a2, style: "display: block" %>
+    <%= form.text_field :a2 %>
+  </div>
+
+  <div>
+    <%= form.label :a3, style: "display: block" %>
+    <%= form.text_field :a3 %>
+  </div>
+
+  <div>
+    <%= form.label :a4, style: "display: block" %>
+    <%= form.text_field :a4 %>
+  </div>
+
+
+<div>
+<%= form.label :ans, style: "display: block" %>
+<%= form.select :ans, options_for_select([["ans 1", "1"], ["ans 2", "2"],["ans 3", "3"],["ans 4", "4"]]) %>
+</div>
+</h2>
+    <%= form.submit %>
+  </div>
+<% end %>
+
