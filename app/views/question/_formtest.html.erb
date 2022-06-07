@@ -1,0 +1,37 @@
+
+<%= form_with(model: question) do |form| %>
+
+
+<h2></h2>
+   <div>
+    <%= form.label :quetion, style: "display: block" %>
+    <%= form.text_field :quetion %>
+  </div>
+
+  <div>
+    <%= form.label :a1, style: "display: block" %>
+    <%= form.check_box  :a1 %>
+  </div>
+
+  <div>
+    <%= form.label :a2, style: "display: block" %>
+    <%= form.check_box :a2 %>
+  </div>
+
+  <div>
+    <%= form.label :a3, style: "display: block" %>
+    <%= form.check_box :a3 %>
+  </div>
+
+  <div>
+    <%= form.label :a4, style: "display: block" %>
+    <%= form.check_box :a4 %>
+  </div>
+
+
+
+</h2>
+    <%= form.submit %>
+  </div>
+<% end %>
+

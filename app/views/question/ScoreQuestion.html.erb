@@ -1,16 +1,65 @@
 <p id="notice"><%= notice %></p>
-
-
 <div>
   <%= hidden_field_tag :remaining_time, @remaining_time %>
   <%score = 0%>
-  
 <%@question.each do |questions|%>
+<%if questions.id <= num_of_question%>
 <%user_ans = params[(questions.id).to_s].to_s%>
-   <%if user_ans.eql? questions.ans.to_s%>
+  <div class="quiz-container" id="quiz">
+    <div class="quiz-header">
+      <%byebug%>
+      <td>Question Number <%=questions.id%>:<%= questions.quetion %></td>
+      <ul>
+         <li>
+          <input type="radio" name="<%=questions.id%> " id="a"  class="answer" >
+          <td><%=questions.a1 %></td>
+        </li>
+        <li>
+          <input type="radio" name="<%=questions.id%>" id="b" class="answer">
+          <td><%= questions.a2 %></td>
+        </li>
+        <li>
+          <input type="radio" name="<%=questions.id%>" id="c"  class="answer">
+          <td><%= questions.a3%></td>
+        </li>
+        <li>
+          <input type="radio" name="<%=questions.id%>" id="d"  class="answer">
+          <td><%= questions.a4 %></td>
+        </li>
+      </ul>    
+      <%if user_ans.eql? questions.ans.to_s%>
        <%score = score +10%>
+  <%end%>
+    </div>
+</div>
   <%end%>
   <%end%>
 Your Score: <%=score%>
+ <%@question.each do |question|%> 
+ <%if question.id <= params["Num_Question"].to_i%>
+<div class="quiz-container" id="quiz">
+    <div class="quiz-header">
+      <td>Question Number <%=question.id%>:<%= question.quetion %></td>
+      <ul>
+         <li>
+          <input type="radio" name="<%=question.id%> " id="a" value= "1" class="answer" editab>
+          <td><%= question.a1 %></td>
+        </li>
+        <li>
+          <input type="radio" name="<%=question.id%>" id="b" value= "2" class="answer">
+          <td><%= question.a2 %></td>
+        </li>
+        <li>
+          <input type="radio" name="<%=question.id%>" id="c" value= "3" class="answer">
+          <td><%= question.a3%></td>
+        </li>
+        <li>
+          <input type="radio" name="<%=question.id%>" id="d" value= "4" class="answer">
+          <td><%= question.a4 %></td>
+        </li>
+      </ul>    
+      <%end%>
+     <% end %>
+    </div>
 </div>
 

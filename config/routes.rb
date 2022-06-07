@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     get "login" => "devise/sessions#new"
     post "login" => "devise/sessions#create"
     delete "logout" => "devise/sessions#destroy"
-    get "profile" =>"devise/user"
+   # get "profile" =>"devise/User"
+
   end
 
  
