@@ -4,30 +4,9 @@
   <div class="timer">
 	<div id="countdown"> 
 		<!-- display the countdown timer here -->
-     <script>
-      function countdownTimer() {
-   const difference = +new Date("2020-01-01") - +new Date();
-  let remaining = "Time's up!";
-
-  if (difference > 0) {
-    const parts = {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
-    };
-    remaining = Object.keys(parts).map(part => {
-    return `${parts[part]} ${part}`;  
-    }).join(" ");
-  }
-
-  document.getElementById("countdown").innerHTML = remaining;
-  setInterval(countdownTimer, 1000);
-    </script>
 	</div>
 
   <%if current_user.role== "admin" %>
-
 <table>
   <thead>
     <tr>
@@ -58,23 +37,12 @@
     <% end %>
   </tbody>
 </table>
-
 <%= link_to 'New Question', new_question_path %>
 <%end%>
 <%if user_signed_in?%>
 
 <div id='time'></div>
-<script>
-  ques.onload = function () {
-    var timer = <%= @time_variable.to_i %>;
-    display = document.querySelector('#time');
-    startTimer(fiveMinutes, display);
-  
-  };
-</script>
-
 <form action="/question/ScoreQuestion" method = "get">
-
  <%@question.each do |question|%> 
  <%if question.id <= params["Num_Question"].to_i%>
  <div class="quiz-container" id="quiz">
@@ -104,6 +72,5 @@
     <button id="submit">Submit</button>
   </div>
   </form>
-  
 <% end%>
 <br>

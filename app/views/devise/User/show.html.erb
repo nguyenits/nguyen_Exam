@@ -1,8 +1,6 @@
 <p style="color: green"><%= notice %></p>
 <div>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
- <% end %>
+
   <%= link_to "Edit this product", edit_question_path(@question) %> |
   <%= link_to "Back to products", question_path%>
   <%= button_to "Destroy this product", @question, method: :delete %>
