@@ -1,3 +1,19 @@
-// Place all the styles related to the Test controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.card {
+    margin: 0 auto;
+    padding: 40px;
+    display: block;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 10px -5px #909090;
+    position: absolute;
+    top: 10%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+}
+
+#countdown {
+    font-size: 500x;
+}

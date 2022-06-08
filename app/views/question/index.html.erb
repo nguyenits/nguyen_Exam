@@ -1,11 +1,34 @@
 <p id="notice"><%= notice %></p>
-<h1>Question</h1>
-<% score = 0%>
-  <div class="timer">
-	<div id="countdown"> 
-		<!-- display the countdown timer here -->
-	</div>
+<script>
+var timeInSecs;
+var ticker;
 
+function startTimer(secs) {
+    timeInSecs = parseInt(secs);
+    ticker = setInterval("tick()", 1000);
+}
+
+function tick() {
+    var secs = timeInSecs;
+    if (secs > 0) {
+        timeInSecs--;
+    } else {
+form.submitForm
+        clearInterval(ticker);
+      function submitAction() {
+            document.myForm.btnSubmit();
+        }
+    }
+    var mins = Math.floor(secs / 60);
+    secs %= 60;
+    var pretty = ((mins < 10) ? "0" : "") + mins + ":" + ((secs < 10) ? "0" : "") + secs;
+    document.getElementById("countdown").innerHTML = pretty;
+}
+startTimer(2); // 4 minutes in seconds
+//Credits to Gulzaib from Pakistan
+</script>
+<% score = 0%>
+Question 
   <%if current_user.role== "admin" %>
 <table>
   <thead>
@@ -41,8 +64,10 @@
 <%end%>
 <%if user_signed_in?%>
 
-<div id='time'></div>
-<form action="/question/ScoreQuestion" method = "get">
+<form  action="/question/ScoreQuestion" method = "get" id = "myForm">
+<div class="card">
+<span id="countdown" style="font-weight: bold;"></span>
+</div>
  <%@question.each do |question|%> 
  <%if question.id <= params["Num_Question"].to_i%>
  <div class="quiz-container" id="quiz">
@@ -69,7 +94,7 @@
       <%end%>
      <% end %>
     </div>
-    <button id="submit">Submit</button>
+    <button id="submit" onclick="submitForm()">Submit</button>
   </div>
   </form>
 <% end%>
