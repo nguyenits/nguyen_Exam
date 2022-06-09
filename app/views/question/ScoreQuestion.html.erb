@@ -3,13 +3,16 @@
 <div>
   <%= hidden_field_tag :remaining_time, @remaining_time %>
   <%score = 0%>
+  
+  <%hs = 10/(params[:num_of_question].to_f)%>          
+
 <%@question.each do |questions|%>
 <%if questions.id <= params["num_of_question"].to_i%>
 <%user_ans = params[(questions.id).to_s].to_s%>
   <div class="quiz-container" id="quiz">
     <div class="quiz-header"> 
       <%if user_ans.eql? questions.ans.to_s%>
-       <%score = score +10%>
+       <%score = score + hs %>
   <%end%>
     </div>
 </div>
@@ -24,61 +27,59 @@
       <ul>
          <li>
           <td><%=question.a1%></td>
-           <%if question.ans.eql? "1"  %> 
-         
-           <img src='/true.jpg'  width="20" height="20">
-             <%else%>
+            <%if question.ans.eql? "1"  %> 
+              <%= image_tag "true.jpg", class: "image_size", size: "5x5" %>
+            <%else%>
               <%if params[(question.id).to_s].to_s.eql? "1"%>
-             
-                <img src='/xdo.jpg'  width="20" height="20">
+               <%= image_tag "xdo.jpg", class: "image_size" %> 
             <%end%>
-             <%end%>
-             <%if !params[(question.id).to_s].present?%>
-                <img src='/xdo.jpg'  width="20" height="20">
-             <%end%>
+              <%end%>
+              <%if !params[(question.id).to_s].present?%>
+              <%= image_tag "xdo.jpg", class: "image_size" %> 
+              <%end%>
         </li>
         <li>
           <td><%= question.a2 %></td>
              <%if question.ans.eql? "2"  %> 
-               <%=1%>
-           <img src='/true.jpg' width="20" height="20">
+             
+    <%= image_tag "true.jpg", class: "image_size" %> 
              <%else%>
               <%if params[(question.id).to_s].to_s.eql? "2"%>
-                <img src="/xdo.jpg"  width="20" height="20">
+                 <%= image_tag "xdo.jpg", class: "image_size" %> 
                  <%end%>
              <%end%>
                  <%if   !params[(question.id).to_s].present?%>
-                <img src="/xdo.jpg"  width="20" height="20">
+                <  <%= image_tag "xdo.jpg", class: "image_size" %> 
              <%end%>
         </li>
         <li>
             <td><%=question.a3%>  </td>
              <%if question.ans.eql? "3"  %> 
-                 <%=1%>
-           <img src='/true.jpg'   width="20" height="20">
+                
+              <%= image_tag "true.jpg", class: "image_size" %> 
               <%else%>
               <%if params[(question.id).to_s].to_s.eql? "3"%>
       
-                <img src="/xdo.jpg"  width="20" height="20">
+                <%= image_tag "xdo.jpg", class: "image_size" %> 
        <%end%>
              <%end%>
                  <%if !params[(question.id).to_s].present?%>
-                <img src="/xdo.jpg"  width="20" height="20">
+               <%= image_tag "xdo.jpg", class: "image_size" %> 
              <%end%>
         </li>
         <li>
           <td><%= question.a4 %></td>
              <%if question.ans.eql? "4"  %> 
-                 <%=1%>
-           <img src='/true.jpg'   width="20" height="20">
+           
+               <%= image_tag "true.jpg", class: "image_size" %> 
               <%else%>
               <%if params[(question.id).to_s].to_s.eql? "4"%>
            
-                <img src="/xdo.jpg"  width="20" height="20">
+               <%= image_tag "xdo.jpg", class: "image_size" %> 
              <%end%>
               <%end%>
                   <%if !params[(question.id).to_s].present?%>
-                <img src="/xdo.jpg"  width="20" height="20">
+                <%= image_tag "xdo.jpg", class: "image_size" %> 
              <%end%>
         </li>
       </ul>    
