@@ -3,7 +3,7 @@
   <%= hidden_field_tag :remaining_time, @remaining_time %>
   <%score = 0%>
 <%@question.each do |questions|%>
-<%if questions.id <= num_of_question%>
+<%if questions.id <= params["Num_Question"].to_i%>
 <%user_ans = params[(questions.id).to_s].to_s%>
   <div class="quiz-container" id="quiz">
     <div class="quiz-header">

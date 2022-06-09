@@ -1,9 +1,9 @@
 class QuestionController < ApplicationController
 before_action :set_question, only: %i[ show edit update destroy ]
 before_action :authenticate_user!, only: [:index, :new]
-num_of_question = 100
+
   def index
-    num_of_question = params["Num_Question"].to_i
+
     @question = Question.order(:id)
   end
   def new

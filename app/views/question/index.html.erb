@@ -1,32 +1,4 @@
 <p id="notice"><%= notice %></p>
-<script>
-var timeInSecs;
-var ticker;
-
-function startTimer(secs) {
-    timeInSecs = parseInt(secs);
-    ticker = setInterval("tick()", 1000);
-}
-
-function tick() {
-    var secs = timeInSecs;
-    if (secs > 0) {
-        timeInSecs--;
-    } else {
-form.submitForm
-        clearInterval(ticker);
-      function submitAction() {
-            document.myForm.btnSubmit();
-        }
-    }
-    var mins = Math.floor(secs / 60);
-    secs %= 60;
-    var pretty = ((mins < 10) ? "0" : "") + mins + ":" + ((secs < 10) ? "0" : "") + secs;
-    document.getElementById("countdown").innerHTML = pretty;
-}
-startTimer(2); // 4 minutes in seconds
-//Credits to Gulzaib from Pakistan
-</script>
 <% score = 0%>
 Question 
   <%if current_user.role== "admin" %>
@@ -64,7 +36,7 @@ Question
 <%end%>
 <%if user_signed_in?%>
 
-<form  action="/question/ScoreQuestion" method = "get" id = "myForm">
+<form  action="/question/ScoreQuestion" method = "get" id = "question_Form">
 <div class="card">
 <span id="countdown" style="font-weight: bold;"></span>
 </div>
@@ -89,7 +61,7 @@ Question
         <li>
           <input type="radio" name="<%=question.id%>" id="d" value= "4" class="answer">
           <td><%= question.a4 %></td>
-        </li>
+        </li> 
       </ul>    
       <%end%>
      <% end %>
@@ -97,5 +69,35 @@ Question
     <button id="submit" onclick="submitForm()">Submit</button>
   </div>
   </form>
+  <script>
+var timeInSecs;
+var ticker;
+function param(name) {
+    return (location.search.split(name + '=')[1] || '').split('&')[0];
+}
+timmer = param("Num_Question");
+function startTimer(secs) {
+    timeInSecs = parseInt(secs);
+    ticker = setInterval("tick()", 1000);
+}
+function tick() {
+    var secs = timeInSecs;
+    if (secs > 0) {
+        timeInSecs--;
+    } else {
+
+     clearInterval(ticker);
+     submitForm();
+    }
+    var mins = Math.floor(secs / 60);
+    secs %= 60;
+    var pretty = ((mins < 10) ? "0" : "") + mins + ":" + ((secs < 10) ? "0" : "") + secs;
+    document.getElementById("countdown").innerHTML = pretty;
+}
+
+startTimer(timmer*60); // 4 minutes in seconds
+//Credits to Gulzaib from Pakistan
+
+</script>
 <% end%>
 <br>
