@@ -3,16 +3,17 @@ before_action :set_question, only: %i[ show edit update destroy ]
 before_action :authenticate_user!, only: [:index, :new]
 
   def index
-
+   
     @question = Question.order(:id)
   end
   def new
     @question = Question.new
   end
   def show  
+
   end
   def ScoreQuestion
-
+  
    @question = Question.order(:id)
   end
 

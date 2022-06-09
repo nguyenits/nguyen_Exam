@@ -1,32 +1,13 @@
 <p id="notice"><%= notice %></p>
+
 <div>
   <%= hidden_field_tag :remaining_time, @remaining_time %>
   <%score = 0%>
 <%@question.each do |questions|%>
-<%if questions.id <= params["Num_Question"].to_i%>
+<%if questions.id <= params["num_of_question"].to_i%>
 <%user_ans = params[(questions.id).to_s].to_s%>
   <div class="quiz-container" id="quiz">
-    <div class="quiz-header">
-      <%byebug%>
-      <td>Question Number <%=questions.id%>:<%= questions.quetion %></td>
-      <ul>
-         <li>
-          <input type="radio" name="<%=questions.id%> " id="a"  class="answer" >
-          <td><%=questions.a1 %></td>
-        </li>
-        <li>
-          <input type="radio" name="<%=questions.id%>" id="b" class="answer">
-          <td><%= questions.a2 %></td>
-        </li>
-        <li>
-          <input type="radio" name="<%=questions.id%>" id="c"  class="answer">
-          <td><%= questions.a3%></td>
-        </li>
-        <li>
-          <input type="radio" name="<%=questions.id%>" id="d"  class="answer">
-          <td><%= questions.a4 %></td>
-        </li>
-      </ul>    
+    <div class="quiz-header"> 
       <%if user_ans.eql? questions.ans.to_s%>
        <%score = score +10%>
   <%end%>
@@ -34,28 +15,71 @@
 </div>
   <%end%>
   <%end%>
-Your Score: <%=score%>
+<h2>Your Score: <%=score%></h2>
  <%@question.each do |question|%> 
- <%if question.id <= params["Num_Question"].to_i%>
-<div class="quiz-container" id="quiz">
+ <%if question.id <= params["num_of_question"].to_i%>
+<div class="quiz-container" id="quiz1">
     <div class="quiz-header">
       <td>Question Number <%=question.id%>:<%= question.quetion %></td>
       <ul>
          <li>
-          <input type="radio" name="<%=question.id%> " id="a" value= "1" class="answer" editab>
-          <td><%= question.a1 %></td>
+          <td><%=question.a1%></td>
+           <%if question.ans.eql? "1"  %> 
+         
+           <img src='/true.jpg'  width="20" height="20">
+             <%else%>
+              <%if params[(question.id).to_s].to_s.eql? "1"%>
+             
+                <img src='/xdo.jpg'  width="20" height="20">
+            <%end%>
+             <%end%>
+             <%if !params[(question.id).to_s].present?%>
+                <img src='/xdo.jpg'  width="20" height="20">
+             <%end%>
         </li>
         <li>
-          <input type="radio" name="<%=question.id%>" id="b" value= "2" class="answer">
           <td><%= question.a2 %></td>
+             <%if question.ans.eql? "2"  %> 
+               <%=1%>
+           <img src='/true.jpg' width="20" height="20">
+             <%else%>
+              <%if params[(question.id).to_s].to_s.eql? "2"%>
+                <img src="/xdo.jpg"  width="20" height="20">
+                 <%end%>
+             <%end%>
+                 <%if   !params[(question.id).to_s].present?%>
+                <img src="/xdo.jpg"  width="20" height="20">
+             <%end%>
         </li>
         <li>
-          <input type="radio" name="<%=question.id%>" id="c" value= "3" class="answer">
-          <td><%= question.a3%></td>
+            <td><%=question.a3%>  </td>
+             <%if question.ans.eql? "3"  %> 
+                 <%=1%>
+           <img src='/true.jpg'   width="20" height="20">
+              <%else%>
+              <%if params[(question.id).to_s].to_s.eql? "3"%>
+      
+                <img src="/xdo.jpg"  width="20" height="20">
+       <%end%>
+             <%end%>
+                 <%if !params[(question.id).to_s].present?%>
+                <img src="/xdo.jpg"  width="20" height="20">
+             <%end%>
         </li>
         <li>
-          <input type="radio" name="<%=question.id%>" id="d" value= "4" class="answer">
           <td><%= question.a4 %></td>
+             <%if question.ans.eql? "4"  %> 
+                 <%=1%>
+           <img src='/true.jpg'   width="20" height="20">
+              <%else%>
+              <%if params[(question.id).to_s].to_s.eql? "4"%>
+           
+                <img src="/xdo.jpg"  width="20" height="20">
+             <%end%>
+              <%end%>
+                  <%if !params[(question.id).to_s].present?%>
+                <img src="/xdo.jpg"  width="20" height="20">
+             <%end%>
         </li>
       </ul>    
       <%end%>
