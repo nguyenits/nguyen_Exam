@@ -70,18 +70,15 @@ Question
   </div>
   </form>
   <script>
-
 var timeInSecs;
 var ticker;
-function submitForm(){
-    const submitFormFunction = Object.getPrototypeOf(question_Form).submit;
-    submitFormFunction.call(question_Form);
+function param(name) {
+    return (location.search.split(name + '=')[1] || '').split('&')[0];
 }
-
+timmer = param("Num_Question");
 function startTimer(secs) {
     timeInSecs = parseInt(secs);
     ticker = setInterval("tick()", 1000);
-    
 }
 function tick() {
     var secs = timeInSecs;
@@ -97,7 +94,8 @@ function tick() {
     var pretty = ((mins < 10) ? "0" : "") + mins + ":" + ((secs < 10) ? "0" : "") + secs;
     document.getElementById("countdown").innerHTML = pretty;
 }
-startTimer(2); // 4 minutes in seconds
+
+startTimer(timmer*60); // 4 minutes in seconds
 //Credits to Gulzaib from Pakistan
 
 </script>
