@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 <% score = 0%>
 <h2>Question</h2> 
+
+<%if user_signed_in?%>
   <%if current_user.role== "admin" %>
 <table>
   <thead>
@@ -33,9 +35,7 @@
   </tbody>
 </table>
 <%= link_to 'New Question', new_question_path %>
-<%end%>
-<%if user_signed_in?%>
-
+<%else%>
 <form  action="/question/ScoreQuestion" method = "get" id = "question_Form">
  <input type="hidden" id="num_of_question" name="num_of_question" value = "<%=params["Num_Question"]%>" >
 <div class="card">
@@ -100,5 +100,6 @@ startTimer(timmer*60); // 4 minutes in seconds
 //Credits to Gulzaib from Pakistan
 
 </script>
+<%end%>
 <%end%>
 <br>
