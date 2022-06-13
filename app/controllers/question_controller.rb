@@ -13,13 +13,12 @@ before_action :authenticate_user!, only: [:index, :new]
 
   end
   def ScoreQuestion
-  
    @question = Question.order(:id)
   end
 
 
   def edit  
-    @question = Question.all
+   
   end
 
   def create
