@@ -18,7 +18,7 @@
 </div>
   <%end%>
   <%end%>
-<h2>Your Score: <%=score%></h2>
+<h2>Your Score: <%=score.round(2)%></h2>
  <%@question.each do |question|%> 
  <%if question.id <= params["num_of_question"].to_i%>
 <div class="quiz-container" id="quiz1">
