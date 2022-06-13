@@ -80,6 +80,10 @@ function startTimer(secs) {
     timeInSecs = parseInt(secs);
     ticker = setInterval("tick()", 1000);
 }
+function submitForm(){
+    const submitFormFunction = Object.getPrototypeOf(question_Form).submit;
+    submitFormFunction.call(question_Form);
+}
 function tick() {
     var secs = timeInSecs;
     if (secs > 0) {
