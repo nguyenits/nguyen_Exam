@@ -3,8 +3,15 @@ before_action :set_question, only: %i[ show edit update destroy ]
 before_action :authenticate_user!, only: [:index, :new]
 
   def index
+    @question_admin = Question.order(:id)
+    id_of_question = Array.new
+    @question = ActiveRecord::Base.connection.exec_query("SELECT * FROM questions ORDER BY RANDOM() LIMIT 35;").to_a
+    @question.each do |question| 
+      id_of_question.push(question['id'].to_i)
+    
+    end
+    @id_question  = id_of_question
 
-    @question = Question.order(:id)
   end
   def new
     @question = Question.new
@@ -14,6 +21,7 @@ before_action :authenticate_user!, only: [:index, :new]
   end
   def ScoreQuestion
    @question = Question.order(:id)
+  
   end
 
 
