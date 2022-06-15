@@ -3,7 +3,7 @@ before_action :set_question, only: %i[ show edit update destroy ]
 before_action :authenticate_user!, only: [:index, :new]
 
   def index
-   
+
     @question = Question.order(:id)
   end
   def new
@@ -64,6 +64,6 @@ before_action :authenticate_user!, only: [:index, :new]
     end
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:quetion, :a1, :a2, :a3, :a4, :ans)
+      params.require(:question).permit(:quetion, :a1, :a2, :a3, :a4, :ans, :role)
     end
 end
