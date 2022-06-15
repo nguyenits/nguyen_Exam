@@ -14,7 +14,8 @@ skips = Question.pluck(:id).count
     a2: Faker::Lorem.paragraph_by_chars(number: 10),
     a3: Faker::Lorem.paragraph_by_chars(number: 10),
     a4: Faker::Lorem.paragraph_by_chars(number: 10),
-    ans: 3
+    ans: 3,
+    role: "xa hoi"
   )
   question.save
 end

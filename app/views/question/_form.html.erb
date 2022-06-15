@@ -28,11 +28,17 @@
     <%= form.text_field :a4 %>
   </div>
 
+ <div>
+    <%= form.label :role, style: "display: block" %>
+    <%= form.text_field :role %>
+  </div>
 
 <div>
 <%= form.label :ans, style: "display: block" %>
 <%= form.select :ans, options_for_select([["ans 1", "1"], ["ans 2", "2"],["ans 3", "3"],["ans 4", "4"]]) %>
 </div>
+
+
 </h2>
     <%= form.submit %>
   </div>
