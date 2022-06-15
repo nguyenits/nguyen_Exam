@@ -22,7 +22,6 @@
  <%@question.each do |question|%> 
 
  <%if id_of_question.include? question.id.to_s%>
- <%=question.ans%>
 <div class="quiz-container" id="quiz1">
     <div class="quiz-header">
       <td>Question Number <%=question.id%>:<%= question.quetion %></td>
