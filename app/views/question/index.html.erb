@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 <% score = 0%>
+<% count =0%>
+
 <h2>Question</h2> 
 
 <%if user_signed_in?%>
@@ -19,7 +21,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @question.each do |question| %>
+    <% @question_admin.each do |question| %>
       <tr>
         <td><%= question.id %></td>
         <td><%= question.quetion %></td>
@@ -40,32 +42,34 @@
 <%else%>
 <form  action="/question/ScoreQuestion" method = "get" id = "question_Form">
  <input type="hidden" id="num_of_question" name="num_of_question" value = "<%=params["Num_Question"]%>" >
+  <input type="hidden" id="id_of_question" name="id_of_question" value = "<%=@id_question%>" >
 <div class="card">
 <span id="countdown" style="font-weight: bold;"></span>
 </div>
  <%@question.each do |question|%> 
- <%if question.id <= params["Num_Question"].to_i%>
+ <%if count < params["Num_Question"].to_i%>
+ <%count = count +1%>
  <div class="quiz-container" id="quiz">
     <div class="quiz-header">
-      <td>Question Number <%=question.id%>:<%= question.quetion %></td>
+  <td>Question Number <%=count%>:<%= question['quetion'] %></td>
       <ul>
          <li>
-          <input type="radio" name="<%=question.id%>" id="a" value= "1" class="answer">
-          <td><%= question.a1 %></td>
+          <input type="radio" name="<%=question['id']%>" id="a" value= "1" class="answer">
+          <td><%= question['a1'] %></td>
         </li>
         <li>
-          <input type="radio" name="<%=question.id%>" id="b" value= "2" class="answer">
-          <td><%= question.a2 %></td>
+          <input type="radio" name="<%=question['id']%>" id="b" value= "2" class="answer">
+          <td><%= question['a2'] %></td>
         </li>
         <li>
-          <input type="radio" name="<%=question.id%>" id="c" value= "3" class="answer">
-          <td><%= question.a3%></td>
+          <input type="radio" name="<%=question['id']%>" id="c" value= "3" class="answer">
+          <td><%= question['a3']%></td>
         </li>
         <li>
-          <input type="radio" name="<%=question.id%>" id="d" value= "4" class="answer">
-          <td><%= question.a4 %></td>
+          <input type="radio" name="<%=question['id']%>" id="d" value= "4" class="answer">
+          <td><%= question['a4'] %></td>
         </li> 
-      </ul>    
+      </ul>   
       <%end%>
      <% end %>
     </div>
@@ -108,4 +112,5 @@ startTimer(timmer*60); // 4 minutes in seconds
 </script>
 <%end%>
 <%end%>
+
 <br>

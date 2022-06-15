@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+  <%id_of_question = params[:id_of_question]%>
 <div>
   <%= hidden_field_tag :remaining_time, @remaining_time %>
   <%score = 0%>
@@ -20,7 +20,8 @@
   <%end%>
 <h2>Your Score: <%=score.round(2)%></h2>
  <%@question.each do |question|%> 
- <%if question.id <= params["num_of_question"].to_i%>
+
+ <%if id_of_question.include? question.id.to_s%>
 <div class="quiz-container" id="quiz1">
     <div class="quiz-header">
       <td>Question Number <%=question.id%>:<%= question.quetion %></td>
