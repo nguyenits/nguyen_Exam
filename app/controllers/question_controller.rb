@@ -8,7 +8,7 @@ before_action :authenticate_user!, only: [:index, :new]
     scrip = String.new
     paramnum = params[:Num_Question].to_s 
     scrip = "SELECT * FROM questions ORDER BY RANDOM() LIMIT " + paramnum  + ";"
-    @question = ActiveRecord::Base.connection.exec_query(scrip).to_a
+    @question = ActiveRecord::Base.connection.exec_query(scrip).to_a  
     @question.each do |question| 
       id_of_question.push(question['id'].to_i)
   
@@ -26,11 +26,14 @@ before_action :authenticate_user!, only: [:index, :new]
    @question = Question.order(:id)
 
   end
+  def admin_indexquestion
+    @question = Question.order(:id)
+  end
  
 
 
   def edit  
-   
+    @question = Question.order(:id)
   end
 
   def create
