@@ -43,8 +43,9 @@
 <form  action="/question/ScoreQuestion" method = "get" id = "question_Form">
  <input type="hidden" id="num_of_question" name="num_of_question" value = "<%=params["Num_Question"]%>" >
   <input type="hidden" id="id_of_question" name="id_of_question" value = "<%=@id_question%>" >
+   
 <div class="card">
-<span id="countdown" style="font-weight: bold;"></span>
+<span id="countdown" style="font-weight: bold;"></span> 
 </div>
  <%@question.each do |question|%> 
  <%if count < params["Num_Question"].to_i%>
