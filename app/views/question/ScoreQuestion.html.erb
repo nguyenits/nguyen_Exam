@@ -8,9 +8,6 @@
   
   <%hs = 10/(params[:num_of_question].to_f)%>          
 
-
-
-<%countq = 1%>
 <%sq = id_of_question.split(",").first%>
  <%@question.each do |question|%> 
  <%user_ans = params[(question.id).to_s].to_s%>
@@ -84,12 +81,12 @@
                 <%= image_tag "xdo.jpg", class: "image_size" %> 
              <%end%>
         </li>   
-        <%if question.id = "43"%>
-       
-        <%end%>
+
          <%if params[(question.id).to_s].present?%>
-                 <%paramQuestion = params[(question.id).to_s].to_s%>
-        <%anser = anser + question.id.to_s+":"+paramQuestion+","%>         
+          <%paramQuestion = params[(question.id).to_s].to_s%>
+          <%anser = anser + question.id.to_s+":"+paramQuestion+","%>       
+             <%else%>
+            <%anser = anser + question.id.to_s+":"+"not anser"+","%>
              <%end%>
       </ul>    
       <%end%>

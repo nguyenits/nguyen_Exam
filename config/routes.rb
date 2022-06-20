@@ -4,7 +4,9 @@ Rails.application.routes.draw do
       get "ScoreQuestion"
     end
   end
+  resources :testofuser do
 
+  end
  
   devise_for :users
   as :user do 
