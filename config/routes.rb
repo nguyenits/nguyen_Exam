@@ -19,6 +19,7 @@ Rails.application.routes.draw do
  
  
   get 'queston/ScoreQuestion'
+  get 'test/ViewallTest'
   # get "question/:id/edit" => "question#edit"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,27 +1,25 @@
 <p id="notice"><%= notice %></p>
+<% anser = String.new%>
   <%id_of_question = params[:id_of_question]%>
+
 <div>
   <%= hidden_field_tag :remaining_time, @remaining_time %>
   <%score = 0%>
   
   <%hs = 10/(params[:num_of_question].to_f)%>          
 
-<%@question.each do |questions|%>
-<%if questions.id <= params["num_of_question"].to_i%>
-<%user_ans = params[(questions.id).to_s].to_s%>
-  <div class="quiz-container" id="quiz">
-    <div class="quiz-header"> 
-      <%if user_ans.eql? questions.ans.to_s%>
+
+
+<%countq = 1%>
+<%sq = id_of_question.split(",").first%>
+ <%@question.each do |question|%> 
+ <%user_ans = params[(question.id).to_s].to_s%>
+ <%if sq.include? question.id.to_s%>
+  <%if user_ans.eql?   question.ans.to_s%>
        <%score = score + hs %>
   <%end%>
-    </div>
-</div>
-  <%end%>
-  <%end%>
-<h2>Your Score: <%=score.round(2)%></h2>
- <%@question.each do |question|%> 
-
- <%if id_of_question.include? question.id.to_s%>
+ <%id_of_question.slice! sq+","%>
+ <%sq = id_of_question.split(",").first%>
 <div class="quiz-container" id="quiz1">
     <div class="quiz-header">
       <td>Question Number <%=question.id%>:<%= question.quetion %></td>
@@ -46,6 +44,7 @@
     <%= image_tag "true.jpg", class: "image_size" %> 
              <%else%>
               <%if params[(question.id).to_s].to_s.eql? "2"%>
+             
                  <%= image_tag "xdo.jpg", class: "image_size" %> 
                  <%end%>
              <%end%>
@@ -56,15 +55,17 @@
         <li>
             <td><%=question.a3%>  </td>
              <%if question.ans.eql? "3"  %> 
-                
+                  
               <%= image_tag "true.jpg", class: "image_size" %> 
               <%else%>
               <%if params[(question.id).to_s].to_s.eql? "3"%>
-      
+
                 <%= image_tag "xdo.jpg", class: "image_size" %> 
        <%end%>
              <%end%>
-                 <%if !params[(question.id).to_s].present?%>
+                 <%if !params[(question.id).to_s].present?%>    
+                
+
                <%= image_tag "xdo.jpg", class: "image_size" %> 
              <%end%>
         </li>
@@ -82,11 +83,24 @@
                   <%if !params[(question.id).to_s].present?%>
                 <%= image_tag "xdo.jpg", class: "image_size" %> 
              <%end%>
-        </li>
+        </li>   
+        <%if question.id = "43"%>
+       
+        <%end%>
+         <%if params[(question.id).to_s].present?%>
+                 <%paramQuestion = params[(question.id).to_s].to_s%>
+        <%anser = anser + question.id.to_s+":"+paramQuestion+","%>         
+             <%end%>
       </ul>    
       <%end%>
-     <% end %>
+     <%end%>
     </div>
+    <h2>Your Score: <%=score.round(2)%></h2>
+   <%test_of_users = Testofuser.new()%>
+   <%test_of_users.userID = current_user.id.to_s%>
+   <%test_of_users.test = anser%>
+   <%test_of_users.score = score.to_s%>
+   <%test_of_users.save%>
     <%= link_to 'Do it again', question_index_path(:Num_Question => params["num_of_question"]) %>
 </div>
 

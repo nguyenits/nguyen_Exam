@@ -5,12 +5,15 @@ before_action :authenticate_user!, only: [:index, :new]
   def index
     @question_admin = Question.order(:id)
     id_of_question = Array.new
-    @question = ActiveRecord::Base.connection.exec_query("SELECT * FROM questions ORDER BY RANDOM() LIMIT 35;").to_a
+    scrip = String.new
+    paramnum = params[:Num_Question].to_s 
+    scrip = "SELECT * FROM questions ORDER BY RANDOM() LIMIT " + paramnum  + ";"
+    @question = ActiveRecord::Base.connection.exec_query(scrip).to_a
     @question.each do |question| 
       id_of_question.push(question['id'].to_i)
-    
+  
     end
-    @id_question  = id_of_question
+    @id_question  = id_of_question.sort()
 
   end
   def new
@@ -21,8 +24,9 @@ before_action :authenticate_user!, only: [:index, :new]
   end
   def ScoreQuestion
    @question = Question.order(:id)
-  
+
   end
+ 
 
 
   def edit  
