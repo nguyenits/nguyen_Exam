@@ -3,6 +3,8 @@ class TestofuserController < ApplicationController
   before_action :set_testofuser, only: %i[ show edit update destroy ]
     def index
       @testofuser = Testofuser.where(userID: current_user.id)
+      @testofuserforadmin = Testofuser.order(:score)
+      @User = User.order(:id)
     end
     def new
  
