@@ -2,18 +2,36 @@
   <thead>
     <tr>
 
-     <th>score:</th>
+    
 
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
+   <%if current_user.role== "admin" %>
+       <% @testofuserforadmin.each do |testofuser| %>
+      <tr>
+      <%user = User.find(testofuser.userID.to_i)%>
+       <th>username: <%=user.username%> </th>
+       </tr>
+       <tr>
+       <th>score:</th>
+       
+        <td><%= testofuser.score.to_f.round(2) %></td>
+        
+        <td><%= link_to 'Show', testofuser %></td>
+        <td><%= link_to 'destroy', testofuser, method: :delete, data: {confirm: 'Are you sure?'}%></td>
+      </tr>
+    <% end %>
+   <%else%>
     <% @testofuser.each do |testofuser| %>
       <tr>
+       <th>score:</th>
         <td><%= testofuser.score.to_f.round(2) %></td>
         <td><%= link_to 'Show', testofuser %></td>
         <td><%= link_to 'destroy', testofuser, method: :delete, data: {confirm: 'Are you sure?'}%></td>
       </tr>
     <% end %>
+    <%end%>
   </tbody>
 </table>

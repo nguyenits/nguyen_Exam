@@ -10,9 +10,7 @@
       <% if user_signed_in? %>
     <li class="nav-item">
             <%= link_to 'Sign out', destroy_user_session_path,method: :delete , class: 'nav-link'%>
-         <li class="nav-item"> 
-            <%= link_to 'View All my Test', testofuser_index_path, class: 'nav-link'%>
-        </li>
+        
          <% if current_user.role == "admin"%>
          <li class="nav-item"> 
             <%= link_to 'edit Question',  question_index_path, class: 'nav-link'%>
@@ -20,7 +18,13 @@
          <li class="nav-item"> 
             <%= link_to 'Edit Account',  edit_user_password_path, class: 'nav-link'%>
         </li>
+         <li class="nav-item"> 
+            <%= link_to 'View All User Test', testofuser_index_path, class: 'nav-link'%>
+        </li>
         <%else%>
+        </li>
+         <li class="nav-item"> 
+            <%= link_to 'View All my Test', testofuser_index_path, class: 'nav-link'%>
         </li>
            <li class="nav-item"> 
             <%= link_to 'edit Password', edit_user_registration_path, class: 'nav-link'%>
@@ -34,6 +38,7 @@
         <li class="nav-item">
            <%= link_to 'Register',new_user_registration_path, class: 'nav-link'%>
         </li>
+        
       <%end%>
       </ul>
     </div>

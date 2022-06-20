@@ -3,8 +3,7 @@ class CreateTestofusers < ActiveRecord::Migration[6.1]
     create_table :testofusers do |t|
       t.string :userID
       t.string :test
-      t.string :score
-
+      t.float  :score
       t.timestamps
     end
   end
