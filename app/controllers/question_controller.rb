@@ -5,12 +5,17 @@ before_action :authenticate_user!, only: [:index, :new]
     @question_admin = Question.order(:id)
     id_of_question = Array.new
     scrip = String.new
-    paramnum = params[:Num_Question].to_s 
-    scrip = "SELECT * FROM questions ORDER BY RANDOM() LIMIT " + paramnum  + ";"
+   
+    paramnum = params[:Num_Question].to_i 
+    scrip = "(SELECT * FROM questions  WHERE level = 'ez' ORDER BY RANDOM() LIMIT "+(paramnum*0.25).to_s+")
+    UNION ALL
+    (SELECT * FROM questions  WHERE level = 'normal' ORDER BY RANDOM() LIMIT "+(paramnum*0.6).to_s+")
+    UNION ALL
+    (SELECT * FROM questions  WHERE level = 'hard' ORDER BY RANDOM() LIMIT "+(paramnum*0.15).to_s+")"
+    
     @question = ActiveRecord::Base.connection.exec_query(scrip).to_a  
     @question.each do |question| 
       id_of_question.push(question['id'].to_i)
-  
     end
     @id_question  = id_of_question.sort()
 
