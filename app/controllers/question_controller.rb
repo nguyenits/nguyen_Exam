@@ -18,7 +18,6 @@ before_action :authenticate_user!, only: [:index, :new]
       id_of_question.push(question['id'].to_i)
     end
     @id_question  = id_of_question.sort()
-
   end
   def new
     @question = Question.new

@@ -59,12 +59,15 @@
            
                <%= image_tag "true.jpg", class: "image_size" %> 
               <%else%>
+              
+              <%end%>
               <%if user_ans.to_s.eql? "4"%>
            
                <%= image_tag "xdo.jpg", class: "image_size" %> 
              <%end%>
+                <%if user_ans.eql? "not anser"%>
+              <%= image_tag "xdo.jpg", class: "image_size" %> 
               <%end%>
-              
         </li>   
       </ul>    
         <%if !test_of_question.eql? ""%>
