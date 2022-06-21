@@ -1,17 +1,18 @@
+     <%count=0%>
       <% test_of_question = @testofuser.test %>
       <h2>Your Score: <%=@testofuser.score.to_f.round(2)%></h2>
       <%qs = test_of_question.split(":").first%>
        <%test_of_question.slice! qs+":"%>
  <%ans = test_of_question.split(",").first%>
-   <%=test_of_question.slice! ans +","%>
+   <%test_of_question.slice! ans +","%>
  <%@question.each do |question|%> 
 
  <%if qs.include? question.id.to_s%>
  <%user_ans = ans%>
-
+<%count = count+1%>
 <div class="quiz-container" id="quiz1">
     <div class="quiz-header">
-      <td>Question Number <%=question.id%>:<%= question.quetion %></td>
+      <td>Question Number <%=count%>:<%= question.quetion %></td>
       <ul>
          <li>
           <td><%=question.a1%></td>
