@@ -17,7 +17,7 @@
 <%if current_user.role =="admin"%>
 
 <%= link_to 'Edit Question', admin_indexquestion_question_index_path %> |
-<%= link_to 'Edit Account', edit_user_password_path %>
+<%= link_to 'Edit Account', user_index_path %>
 <%end%>
 <% else%>
 <p>Please Login </p>
