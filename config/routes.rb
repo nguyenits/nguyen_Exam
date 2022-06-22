@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :testofuser do
 
   end
- 
+  resources :user
   devise_for :users
   as :user do 
     root to: "home#show"
