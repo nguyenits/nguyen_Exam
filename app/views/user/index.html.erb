@@ -5,7 +5,7 @@
   </thead>
   <tbody>
    <%if current_user.role== "admin" %>
-       <% @userforadmin.each do |useradmin| %>
+       <% @user.each do |useradmin| %>
       <tr>
        <th>username: <%=useradmin.username%> </th>
        </tr>
