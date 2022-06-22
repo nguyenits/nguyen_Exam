@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr> <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+   <%if current_user.role== "admin" %>
+       <% @userforadmin.each do |useradmin| %>
+      <tr>
+       <th>username: <%=useradmin.username%> </th>
+       </tr>
+       <tr>
+       <th>email: <%=useradmin.email%></th>
+         <td><%= link_to 'Edit', edit_user_path(useradmin) %></td>
+        <td><%= link_to 'destroy', useradmin, method: :delete, data: {confirm: 'Are you sure?'}%></td>
+      </tr>
+    <% end %>
+   <%else%>
+   You don't have permision
+    <%end%>
+  </tbody>
+</table>
