@@ -2,13 +2,17 @@ class UserController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new]
   before_action :set_user, only: %i[ show edit update destroy update_password ]
     def index
-      @user = User.order(:id)
+      if(current_user.id ==1)
+        @user= User.order(:id)
+        end
     end
     def new
  
     end
     def show  
+      if(current_user.id ==1)
       @user= User.order(:id)
+      end
     end 
    
     def edit  
@@ -19,7 +23,6 @@ class UserController < ApplicationController
     # PATCH/PUT /questions/1 or /questions/1.json
     def update
       @user = User.find(params[:id])
-      byebug
      if @user.update(user_params)
       redirect_to root_path, notice:"password change"
      else
