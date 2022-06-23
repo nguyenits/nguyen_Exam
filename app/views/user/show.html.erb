@@ -1,6 +1,12 @@
 <p style="color: green"><%= notice %></p>
 <div>
+
+<%if current_user.role == "admin"%>
 <%= render "user/user" %>
   <%= link_to "Back to list", testofuser_path%>
-  <%= button_to "Destroy this testofuser", @testofuser, method: :delete %>
+
+
+<%else%>
+<h1>You don't have permision</h1>
+<%end%>
 </div>
