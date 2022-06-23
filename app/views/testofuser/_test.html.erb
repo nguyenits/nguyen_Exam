@@ -5,10 +5,12 @@
        <%test_of_question.slice! qs+":"%>
  <%ans = test_of_question.split(",").first%>
    <%test_of_question.slice! ans +","%>
- <%@question.each do |question|%> 
 
+ <%@question.each do |question|%> 
+  
  <%if qs.include? question.id.to_s%>
  <%user_ans = ans%>
+
 <%count = count+1%>
 <div class="quiz-container" id="quiz1">
     <div class="quiz-header">

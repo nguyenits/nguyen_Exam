@@ -1,18 +1,24 @@
-<table>
+<h1 style="text-align: center;">User Score</h1>
+
   <thead>
-    <tr> <th colspan="3"></th>
+    <tr> <th colspan="2"></th>
     </tr>
   </thead>
   <tbody>
+<div style="overflow-x:auto;">
+<table>
    <%if current_user.role== "admin" %>
+   <tr class="tes_user">
+   <th>username</th>
+   <th>email</th>
+    <th>score</th> 
+    <th></th>
+   </tr>
        <% @testofuserforadmin.each do |testofuser| %>
-      <tr>
+      <tr class="tes_user">
       <%user = User.find(testofuser['userID'].to_i)%>
-       <th>username: <%=user.username%> </th>
-       </tr>
-       <tr>
-       <th>score:</th>
-        
+    <td>   <%=user.username%> </td>
+        <td>   <%=user.email%> </td>
         <td><%= testofuser['score'].to_f.round(2) %></td>
         <td><%= link_to 'Show', testofuser_path(testofuser['id'])%></td>
       </tr>
@@ -20,12 +26,11 @@
    <%else%>
     <% @testofuser.each do |testofuser| %>
       <tr>
-       <th>score:</th>
         <td><%= testofuser.score.to_f.round(2) %></td>
         <td><%= link_to 'Show', testofuser %></td>
-
       </tr>
     <% end %>
     <%end%>
   </tbody>
 </table>
+</div>
