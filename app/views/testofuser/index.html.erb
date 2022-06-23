@@ -12,10 +12,9 @@
        </tr>
        <tr>
        <th>score:</th>
-       
+        
         <td><%= testofuser['score'].to_f.round(2) %></td>
         <td><%= link_to 'Show', testofuser_path(testofuser['id'])%></td>
-        <td><%= link_to 'destroy', testofuser, method: :delete, data: {confirm: 'Are you sure?'}%></td>
       </tr>
     <% end %>
    <%else%>
@@ -24,7 +23,7 @@
        <th>score:</th>
         <td><%= testofuser.score.to_f.round(2) %></td>
         <td><%= link_to 'Show', testofuser %></td>
-        <td><%= link_to 'destroy', testofuser, method: :delete, data: {confirm: 'Are you sure?'}%></td>
+
       </tr>
     <% end %>
     <%end%>
