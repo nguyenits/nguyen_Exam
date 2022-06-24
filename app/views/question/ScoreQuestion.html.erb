@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 <% anser = String.new%>
+
   <%id_of_question = params[:id_of_question]%>
 
 <div>
@@ -10,84 +11,84 @@
 
 <%sq = id_of_question.split(",").first%>
  <%@question.each do |question|%> 
- <%user_ans = params[(question.id).to_s].to_s%>
- <%if sq.include? question.id.to_s%>
-  <%if user_ans.eql?   question.ans.to_s%>
+ <%user_ans = params[(question['id']).to_s].to_s%>
+ <%if sq.include? question['id'].to_s%>
+  <%if user_ans.eql?   question['ans'].to_s%>
        <%score = score + hs %>
   <%end%>
- <%id_of_question.slice! sq+","%>
+ <%id_of_question.slice! sq+","%> 
  <%sq = id_of_question.split(",").first%>
 <div class="quiz-container" id="quiz1">
     <div class="quiz-header">
-      <td>Question Number <%=count%>:<%= question.quetion %></td>
+      <td>Question Number <%=count%>:<%= question['quetion'] %></td>
       <%count = count +1  %>
       <ul>
          <li>
-          <td><%=question.a1%></td>
-            <%if question.ans.eql? "1"  %> 
+          <td><%=question['a1']%></td>
+            <%if question['ans'].eql? "1"  %> 
               <%= image_tag "true.jpg", class: "image_size", size: "5x5" %>
             <%else%>
-              <%if params[(question.id).to_s].to_s.eql? "1"%>
+              <%if params[(question['id']).to_s].to_s.eql? "1"%>
                <%= image_tag "xdo.jpg", class: "image_size" %> 
             <%end%>
               <%end%>
-              <%if !params[(question.id).to_s].present?%>
+              <%if !params[(question['id']).to_s].present?%>
               <%= image_tag "xdo.jpg", class: "image_size" %> 
               <%end%>
         </li>
         <li>
-          <td><%= question.a2 %></td>
-             <%if question.ans.eql? "2"  %> 
+          <td><%= question['a2'] %></td>
+             <%if question['ans'].eql? "2"  %> 
              
     <%= image_tag "true.jpg", class: "image_size" %> 
              <%else%>
-              <%if params[(question.id).to_s].to_s.eql? "2"%>
+              <%if params[(question['id']).to_s].to_s.eql? "2"%>
              
                  <%= image_tag "xdo.jpg", class: "image_size" %> 
                  <%end%>
              <%end%>
-                 <%if   !params[(question.id).to_s].present?%>
+                 <%if   !params[(question['id']).to_s].present?%>
                 <%= image_tag "xdo.jpg", class: "image_size" %> 
              <%end%>
         </li>
         <li>
-            <td><%=question.a3%>  </td>
-             <%if question.ans.eql? "3"  %> 
+            <td><%=question['a3']%>  </td>
+             <%if question['ans'].eql? "3"  %> 
                   
               <%= image_tag "true.jpg", class: "image_size" %> 
               <%else%>
-              <%if params[(question.id).to_s].to_s.eql? "3"%>
+              <%if params[(question['id']).to_s].to_s.eql? "3"%>
 
                 <%= image_tag "xdo.jpg", class: "image_size" %> 
        <%end%>
              <%end%>
-                 <%if !params[(question.id).to_s].present?%>    
+                 <%if !params[(question['id']).to_s].present?%>    
                 
 
                <%= image_tag "xdo.jpg", class: "image_size" %> 
              <%end%>
         </li>
         <li>
-          <td><%= question.a4 %></td>
-             <%if question.ans.eql? "4"  %> 
+          <td><%= question['a4'] %></td>
+             <%if question['ans'].eql? "4"  %> 
            
                <%= image_tag "true.jpg", class: "image_size" %> 
               <%else%>
-              <%if params[(question.id).to_s].to_s.eql? "4"%>
+              <%if params[(question['id']).to_s].to_s.eql? "4"%>
            
                <%= image_tag "xdo.jpg", class: "image_size" %> 
              <%end%>
               <%end%>
-                  <%if !params[(question.id).to_s].present?%>
+                  <%if !params[(question['id']).to_s].present?%>
                 <%= image_tag "xdo.jpg", class: "image_size" %> 
              <%end%>
         </li>   
 
-         <%if params[(question.id).to_s].present?%>
-          <%paramQuestion = params[(question.id).to_s].to_s%>
-          <%anser = anser + question.id.to_s+":"+paramQuestion+","%>       
+         <%if params[(question['id']).to_s].present?%>
+          <%paramQuestion = params[(question['id']).to_s].to_s%>
+          <%anser = anser + question['id'].to_s+":"+paramQuestion+","%>       
              <%else%>
-            <%anser = anser + question.id.to_s+":"+"not anser,"%>
+            <%anser = anser + question['id'].to_s+":"+"not anser,"%>
              <%end%>
       </ul>    
       <%end%>
