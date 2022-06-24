@@ -13,6 +13,7 @@
 <div class="card">
 <span id="countdown" style="font-weight: bold;"></span>
 </div>
+
  <%@question.each do |question|%> 
  <%if count < params["Num_Question"].to_i%>
  <%count = count +1%>
@@ -49,6 +50,10 @@ var ticker;
 function param(name) {
     return (location.search.split(name + '=')[1] || '').split('&')[0];
 }
+function submitForm(){
+    const submitFormFunction = Object.getPrototypeOf(question_Form).submit;
+    submitFormFunction.call(question_Form);
+}
 timmer = param("Num_Question");
 function startTimer(secs) {
     timeInSecs = parseInt(secs);
@@ -69,11 +74,10 @@ function tick() {
     document.getElementById("countdown").innerHTML = pretty;
 }
 
-startTimer(timmer*60); // 4 minutes in seconds
+startTimer(5); //   4 minutes in seconds
 //Credits to Gulzaib from Pakistan
 
 </script>
+
 <%end%>
-
-
 <br>
