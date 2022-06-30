@@ -18,17 +18,14 @@
        <% @testofuserforadmin.each do |testofuser| %>
       <tr class="tes_user">
       <%user = User.find(testofuser['userID'].to_i)%>
-         
         <td><%=user.username%> </td>
         <td><%=user.email%> </td>
         <td><%= testofuser['score'].to_f.round(2) %></td>
         <td><%=testofuser['created_at']%>
         <td><%= link_to 'Show', testofuser_path(testofuser['id'])%></td>
-
       </tr>
     <% end %>
    <%else%>
-
 <h1 style="text-align: center;">My Score</h1>
  <tr class="tes_user">
    <th>created_at</th>
@@ -42,8 +39,7 @@
      
         <td><%= link_to 'Show', testofuser %></td>
       </tr>
-    <% end %>
-           
+    <% end %>       
     <%end%>
   </tbody>
 </table>

@@ -5,7 +5,6 @@ before_action :authenticate_user!, only: [:index, :new]
     @question_admin = Question.order(:id)
     id_of_question = Array.new
     scrip = String.new
-   
     paramnum = params[:Num_Question].to_i 
     scrip = "(SELECT * FROM questions  WHERE level = 'ez' ORDER BY RANDOM() LIMIT "+(paramnum*0.25).to_s+")
     UNION ALL
@@ -13,24 +12,20 @@ before_action :authenticate_user!, only: [:index, :new]
     UNION ALL
     (SELECT * FROM questions  WHERE level = 'hard' ORDER BY RANDOM() LIMIT "+(paramnum*0.15).to_s+")
     Order by id"
-    
     @question = ActiveRecord::Base.connection.exec_query(scrip).to_a  
     @question.each do |question| 
       id_of_question.push(question['id'].to_i)
     end
     @id_question  = id_of_question
-
   end
   def new
     @question = Question.new
-    
   end
   def show  
 
   end
   def ScoreQuestion
     listQuestion = params[:id_of_question].to_s
-
     listQuestion["["] = "("
     listQuestion["]"] = ")"
     scrip = "Select * From questions where id IN " + listQuestion
