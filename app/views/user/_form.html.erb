@@ -1,7 +1,4 @@
 <h2>Change <%= @user.username%> password</h2>
-
-
-
 <%= form_with model: @user, url: edit_user_path, url: { action: "update" }  do |f| %> 
   <%= render "devise/shared/error_messages", resource: @user %>
   <div class="field">
