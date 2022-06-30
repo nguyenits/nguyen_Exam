@@ -13,7 +13,7 @@ before_action :authenticate_user!, only: [:index, :new]
     (SELECT * FROM questions  WHERE level = 'hard' ORDER BY RANDOM() LIMIT "+(paramnum*0.15).to_s+")
     Order by id"
     @question = ActiveRecord::Base.connection.exec_query(scrip).to_a  
-    @question.each do |question| 
+    @question.each do |question|  
       id_of_question.push(question['id'].to_i)
     end
     @id_question  = id_of_question
@@ -61,7 +61,6 @@ before_action :authenticate_user!, only: [:index, :new]
       if @question.update(question_params)
         format.html { redirect_to question_url(@question), notice: "Question was successfully updated." }
         format.json { render :show, status: :ok, location: @question }
-        puts "thanh cong"
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @question.errors, status: :unprocessable_entity }
