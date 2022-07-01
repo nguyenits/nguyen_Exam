@@ -1,11 +1,6 @@
 // Place all the styles related to the User controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-* {
-    padding: 0px;
-    margin: 0px;
-}
-
 header {
     background-color: black;
     color: white;
@@ -20,6 +15,7 @@ h1 {
     font-family: 'system-ui';
     text-transform: uppercase;
     text-align: center;
+    padding-top: 1em;
 }
 
 main {
@@ -217,6 +213,54 @@ label.light {
     text-align: center;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
     border-radius: 100%;
+}
+
+.edituser-contanier {
+    .edituser {
+        justify-content: flex-start;
+        border: 1px solid;
+        height: 32px;
+        margin: 10px 5px;
+        padding: 5em 10px;
+        width: 100%;
+        border-collapse: collapse;
+        th,
+        td {
+            padding: 15px;
+            text-align: center;
+            border: 0.5px solid;
+            height: 70px;
+            width: 70%;
+            height: 50px;
+        }
+        tr:hover {
+            background-color: coral;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        th {
+            background-color: #04AA6D;
+            color: white;
+            border-color: black;
+            text-align: center;
+            height: 70px;
+            width: 70%;
+            height: 50px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        h1 {
+            text-align: center;
+        }
+    }
+    .edit_user {
+        padding: 5em 10em;
+    }
+    .actions {
+        text-align: center;
+    }
 }
 
 @media screen and (min-width: 480px) {

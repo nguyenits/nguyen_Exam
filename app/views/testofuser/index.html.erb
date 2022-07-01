@@ -1,14 +1,12 @@
-<thead>
-    <tr> <th colspan="2"></th>
-    </tr>
-  </thead>
+    <header>
+        <h1>Score</h1>
+    </header>
   <tbody>
-<div style="overflow-x:auto;">
+<div style="padding: 2em 4em;">
 <table>
    <%if current_user.role== "admin" %>
-   <h1 style="text-align: center;">User Score</h1>
    <tr class="tes_user">
-   
+
    <th>username</th>
    <th>email</th>
     <th>score</th> 
@@ -26,7 +24,6 @@
       </tr>
     <% end %>
    <%else%>
-<h1 style="text-align: center;">My Score</h1>
  <tr class="tes_user">
    <th>created_at</th>
    <th>score</th>
@@ -44,3 +41,6 @@
   </tbody>
 </table>
 </div>
+    <footer>
+        <p>View my project <a href="#">NguyenExam&trade;</a></p>
+    </footer>

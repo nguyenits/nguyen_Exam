@@ -1,4 +1,7 @@
-<h2>Change <%= @user.username%> password</h2>
+  <header>
+        <h1>Change user password</h1>
+    </header>
+
 <%= form_with model: @user, url: edit_user_path, url: { action: "update" }  do |f| %> 
   <%= render "devise/shared/error_messages", resource: @user %>
   <div class="field">
@@ -18,3 +21,6 @@
     <%= f.submit "Change User password",class: "btn btn-primary" %>
   </div>
 <% end %>
+    <footer>
+        <p>View my project <a href="#">NguyenExam&trade;</a></p>
+    </footer>
