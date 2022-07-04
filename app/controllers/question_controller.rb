@@ -18,7 +18,7 @@ before_action :authenticate_user!, only: [:index, :new]
     end
     @id_question  = id_of_question
   end
-  def new 
+  def new
     @question = Question.new
   end
   def show  
