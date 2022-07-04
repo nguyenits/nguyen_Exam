@@ -1,8 +1,11 @@
-
-<%== pagy_nav(@pagy) %>
+   <header>
+        <h1>Manager Question</h1>
+    </header>
+  <div class="editques-container">
 <table>
   <thead>
-    <tr>
+    <tr class="editques">
+  
    <th>ID</th>
      <th>Question</th>
      <th>Anser 1</th>
@@ -12,7 +15,8 @@
      <th>Right anser</th>
        <th>Role</th>
        <th>level</th>
-      <th colspan="3"></th>
+ 
+      <th colspan="3">action</th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +37,11 @@
       </tr>
     <% end %>
   </tbody>
+
 </table>
+  </div>
 <%== pagy_nav(@pagy) %>
 <%= link_to 'New Question', new_question_path %>
+    <footer>
+        <p>View my project <a href="#">NguyenExam&trade;</a></p>
+    </footer>

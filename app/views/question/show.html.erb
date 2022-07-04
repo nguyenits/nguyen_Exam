@@ -1,7 +1,12 @@
 <p style="color: green"><%= notice %></p>
-<div>
+  <div class="showquestion-container">
+  <div class="showq">
 <%= render "question/question" %>
+</div >
   <%= link_to "Edit this question", edit_question_path(@question) %> |
   <%= link_to "Back to question", question_path%>
   <%= button_to "Destroy this question", @question, method: :delete %>
 </div>
+    <footer>
+        <p>View my project <a href="#">NguyenExam&trade;</a></p>
+    </footer>

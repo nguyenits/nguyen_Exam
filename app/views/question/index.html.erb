@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 <% score = 0%>
 <% count =0%>
-
-<h2>Question</h2> 
-
+  <header>
+        <h1>Question</h1>
+    </header>
 <%if user_signed_in?%>
   
 <form  action="/question/ScoreQuestion" method = "get" id = "question_Form">
@@ -13,13 +13,14 @@
 <div class="card">
 <span id="countdown" style="font-weight: bold;"></span>
 </div>
-
+<div class="test-continer">
  <%@question.each do |question|%> 
  <%if count < params["Num_Question"].to_i%>
  <%count = count +1%>
  <div class="quiz-container" id="quiz">
     <div class="quiz-header">
-  <td>Question Number <%=count%>:<%= question['quetion'] %></td>
+  <div style="font-weight: bold; font-size : 1.25em">Question Number <%=count%>:<br> </div>
+  <div>&emsp;<%= question['quetion'] %></div>
       <ul>
          <li>
           <input type="radio" name="<%=question['id']%>" id="a" value= "1" class="answer">
@@ -81,3 +82,6 @@ startTimer(5); //   4 minutes in seconds
 </script>
 <%end%>
 <br>
+    <footer>
+        <p>View my project <a href="#">NguyenExam&trade;</a></p>
+    </footer>
