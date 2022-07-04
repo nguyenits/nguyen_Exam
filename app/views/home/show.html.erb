@@ -14,6 +14,13 @@
   <option value="30">30 QUestion </option>
 </select>
 </div>
+<div class="btn-group" role="group" aria-label="Basic example">
+ <select class="form-select" aria-label="Default select example" name ="level_Question">
+  <option value="ez">easy</option>
+  <option value="normal">medium</option>
+  <option value="hard">difficult</option>
+    <option value="very hard">very difficult</option>
+</select>
 <button type="submit" class="btn btn-primary">start</button>
 <%end%>
 <%if current_user.role =="admin"%>
