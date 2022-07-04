@@ -7,15 +7,18 @@ before_action :authenticate_user!, only: [:index, :new]
     scrip = String.new
     paramnum = params[:Num_Question].to_i 
     paramslevel = params[:level_Question]
-    scrip = "SELECT * FROM questions  WHERE level = '"+paramslevel+"' ORDER BY RANDOM() LIMIT "+(paramnum.to_s)
-    
+      scrip = "
+      SELECT * FROM (
+          SELECT * FROM questions WHERE level = '"+paramslevel+"' ORDER BY RANDOM() LIMIT "+(paramnum.to_s)+"
+      ) u
+      ORDER BY id"
     @question = ActiveRecord::Base.connection.exec_query(scrip).to_a  
     @question.each do |question|  
       id_of_question.push(question['id'].to_i)
     end
     @id_question  = id_of_question
   end
-  def new
+  def new 
     @question = Question.new
   end
   def show  
