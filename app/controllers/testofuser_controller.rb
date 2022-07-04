@@ -1,9 +1,8 @@
 class TestofuserController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new]
   before_action :set_testofuser, only: %i[ show edit update destroy ]
     def index
       @testofuser = Testofuser.where(userID: current_user.id)
-scrip = " SELECT * FROM testofusers  ORDER BY CAST(score AS FLOAT) desc"
+      scrip = " SELECT * FROM testofusers  ORDER BY CAST(score AS FLOAT) desc"
       @testofuserforadmin =  ActiveRecord::Base.connection.exec_query(scrip).to_a  
       @User = User.order(:id)
     end
