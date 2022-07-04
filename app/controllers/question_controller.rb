@@ -4,9 +4,10 @@ class QuestionController < ApplicationController
   def index
     @question_admin = Question.order(:id)
     id_of_question = Array.new
+
     param_num = params[:Num_Question]
     params_level = params[:level_Question]
-      @question = Question.order("RANDOM()").limit(param_num).where(level: params_level)
+    @question = Question.order("RANDOM()").limit(param_num).where(level: params_level)
     @question.each do |question|  
       id_of_question.push(question['id'].to_i)
     end
@@ -52,6 +53,7 @@ class QuestionController < ApplicationController
       if @question.update(question_params)
         format.html { redirect_to question_url(@question), notice: "Question was successfully updated." }
         format.json { render :show, status: :ok, location: @question }
+        puts "thanh cong"
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @question.errors, status: :unprocessable_entity }
