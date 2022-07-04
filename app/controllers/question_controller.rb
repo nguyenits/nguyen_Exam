@@ -6,12 +6,9 @@ before_action :authenticate_user!, only: [:index, :new]
     id_of_question = Array.new
     scrip = String.new
     paramnum = params[:Num_Question].to_i 
-    scrip = "(SELECT * FROM questions  WHERE level = 'ez' ORDER BY RANDOM() LIMIT "+(paramnum*0.25).to_s+")
-    UNION ALL
-    (SELECT * FROM questions  WHERE level = 'normal' ORDER BY RANDOM() LIMIT "+(paramnum*0.6).to_s+")
-    UNION ALL
-    (SELECT * FROM questions  WHERE level = 'hard' ORDER BY RANDOM() LIMIT "+(paramnum*0.15).to_s+")
-    Order by id"
+    paramslevel = params[:level_Question]
+    scrip = "SELECT * FROM questions  WHERE level = '"+paramslevel+"' ORDER BY RANDOM() LIMIT "+(paramnum.to_s)
+    
     @question = ActiveRecord::Base.connection.exec_query(scrip).to_a  
     @question.each do |question|  
       id_of_question.push(question['id'].to_i)
