@@ -1,22 +1,17 @@
 class QuestionController < ApplicationController
-before_action :set_question, only: %i[ show edit update destroy ]
-before_action :authenticate_user!, only: [:index, :new]
+ before_action :set_question, only: %i[ show edit update destroy ]
+
   def index
     @question_admin = Question.order(:id)
     id_of_question = Array.new
-    scrip = String.new
-    paramnum = params[:Num_Question].to_i 
-    paramslevel = params[:level_Question]
-      scrip = "
-      SELECT * FROM (
-          SELECT * FROM questions WHERE level = '"+paramslevel+"' ORDER BY RANDOM() LIMIT "+(paramnum.to_s)+"
-      ) u
-      ORDER BY id"
-    @question = ActiveRecord::Base.connection.exec_query(scrip).to_a  
+
+    param_num = params[:Num_Question]
+    params_level = params[:level_Question]
+    @question = Question.order("RANDOM()").limit(param_num).where(level: params_level)
     @question.each do |question|  
       id_of_question.push(question['id'].to_i)
     end
-    @id_question  = id_of_question
+    @id_question  =  id_of_question.sort
   end
   def new
     @question = Question.new
@@ -25,11 +20,8 @@ before_action :authenticate_user!, only: [:index, :new]
 
   end
   def ScoreQuestion
-    listQuestion = params[:id_of_question].to_s
-    listQuestion["["] = "("
-    listQuestion["]"] = ")"
-    scrip = "Select * From questions where id IN " + listQuestion
-    @question = ActiveRecord::Base.connection.exec_query(scrip).to_a  
+    listQuestion = params[:id_of_question].tr('[]', '').split(',').map(&:to_i)
+    @question = Question.where('id IN (?)', listQuestion)
 
   end
   def admin_indexquestion
@@ -61,6 +53,7 @@ before_action :authenticate_user!, only: [:index, :new]
       if @question.update(question_params)
         format.html { redirect_to question_url(@question), notice: "Question was successfully updated." }
         format.json { render :show, status: :ok, location: @question }
+        puts "thanh cong"
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @question.errors, status: :unprocessable_entity }
