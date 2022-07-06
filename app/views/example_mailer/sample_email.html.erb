@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  <%@testofuser = Testofuser.last%>
+  <%@question = Question.all%>
+  You just done the test in <%=@testofuser.created_at%>
+   <%= render "testofuser/test" %>
+  </body>
+</html>
