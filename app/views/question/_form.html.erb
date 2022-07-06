@@ -33,10 +33,11 @@
   </div>
 <div>
     <%= form.label :level, style: "display: block" %>
-     <%= form.select :level, options_for_select([["ez", "ez"], ["normal", "normal"],["hard", "hard"]]) %>
+     <%= form.select :level, Rails.application.config_for(:settings).dig(:post_categories) %>
   </div>
 <div>
 <%= form.label :ans, style: "display: block" %>
+
 <%= form.select :ans, options_for_select([["ans 1", "1"], ["ans 2", "2"],["ans 3", "3"],["ans 4", "4"]]) %>
 </div>
 

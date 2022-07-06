@@ -13,7 +13,7 @@ class QuestionController < ApplicationController
     end
     @id_question  =  id_of_question.sort
   end
-  def new 
+  def new
     @question = Question.new
   end
   def show  

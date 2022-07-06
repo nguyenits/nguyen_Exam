@@ -71,7 +71,6 @@ main {
 .submit_class {
     border-style: none;
     border-radius: 5px;
-    background-color: #FFE6D4;
     padding: 8px 20px;
     font-family: 'system-ui';
     text-transform: uppercase;
@@ -121,7 +120,7 @@ body {
     margin: 10px auto;
     padding: 10px 20px;
     background: #f4f7f8;
-    border-radius: 8px;
+    border: 2px solid black;
 }
 
 h1 {
@@ -149,8 +148,9 @@ select {
     outline: 0;
     padding: 15px;
     width: 100%;
+    text-align: center;
     background-color: #e8eeef;
-    color: #8a97a0;
+    color: #2e383f;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
     margin-bottom: 30px;
 }
@@ -261,6 +261,10 @@ label.light {
     .actions {
         text-align: center;
     }
+}
+
+.alert {
+    color: #ff0000;
 }
 
 @media screen and (min-width: 480px) {
