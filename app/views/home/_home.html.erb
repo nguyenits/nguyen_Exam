@@ -1,0 +1,9 @@
+<%= form_tag root_path do %>
+<div class="btn-group" role="group" aria-label="Basic example">
+<%= select_tag(:Num_Question, options_for_select([["20 Question",20],["25 Question",25],["30 Question",30]], params[:Num_Question] ), class:"select") %>
+</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+<%= select_tag(:level_Question, options_for_select([["easy","ez"],["medium","normal"],["difficult","hard"],["very difficult","very hard"]], params[:level_Question] ), class:"select") %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="submit" value="Start">
+<% end %>

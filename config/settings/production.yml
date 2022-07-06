@@ -1,0 +1,9 @@
+producttion:
+ name: nguyen
+
+shared: 
+  post_categories:
+   ez: easy
+   normal: medium
+   hard: difficult
+   very hard: very difficult
