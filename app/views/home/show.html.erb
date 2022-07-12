@@ -7,29 +7,7 @@
 <% if user_signed_in?  %>
 <h2>Welcome <%=current_user.username%>:</h2> 
    <%if current_user.role != "admin"%>
-<div class="btn-group" role="group" aria-label="Basic example">
- <select class="form-select" aria-label="Default select example" name ="Num_Question">
-  <option value="20">20 Question</option>
-  <option value="25">25 Question</option>
-  <option value="30">30 QUestion </option>
-</select>
-</div>
-<div class="btn-group1" role="group" aria-label="Basic example">
- <select class="form-select" aria-label="Default select example" name ="level_Question">
-  <option value="ez">easy</option>
-  <option value="normal">medium</option>
-  <option value="hard">difficult</option>
-    <option value="very hard">very difficult</option>
-</select>
-<div class="btn-group2" role="group" aria-label="Basic example">
- <select class="form-select" aria-label="Default select example" name ="topic">
-  <option value="xa hoi">xa hoi</option>
-  <option value="tu nhien">tu nhien</option>
-  <option value="esport">esport</option>
-</select>
-</div>
-<button type="submit" class="btn btn-primary">start</button>
-
+<%=render "home"%>
 <%end%>
 <%if current_user.role =="admin"%>
 <%= link_to 'Edit Question', admin_indexquestion_question_index_path %> |
