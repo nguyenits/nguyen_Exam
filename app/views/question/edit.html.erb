@@ -1,6 +1,6 @@
-   <header>
-        <h1>Editing Question</h1>
-    </header>
+<header>
+  <h1>Editing Question</h1>
+</header>
 <div class="editquestion-contanier">
 <%= form_with model: @question , url: { action: "update" } do |form| %> 
   <% if @question.errors.any? %>

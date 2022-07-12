@@ -1,26 +1,23 @@
-  <header>
-        <h1>Change user password</h1>
-    </header>
-
+<header>
+  <h1>Change user password</h1>
+</header>
 <%= form_with model: @user, url: edit_user_path, url: { action: "update" }  do |f| %> 
-  <%= render "devise/shared/error_messages", resource: @user %>
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="action">
-    <%= f.submit "Change User password",class: "btn btn-primary" %>
-  </div>
+<%= render "devise/shared/error_messages", resource: @user %>
+<div class="field">
+  <%= f.label :password, "New password" %><br />
+  <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+  <% end %>
+  <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+</div>
+<div class="field">
+  <%= f.label :password_confirmation, "Confirm new password" %><br />
+  <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+</div>
+<div class="action">
+  <%= f.submit "Change User password",class: "btn btn-primary" %>
+</div>
 <% end %>
-    <footer>
-        <p>View my project <a href="#">NguyenExam&trade;</a></p>
-    </footer>
+<footer>
+  <p>View my project <a href="#">NguyenExam&trade;</a></p>
+</footer>

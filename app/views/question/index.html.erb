@@ -1,51 +1,49 @@
 <p id="notice"><%= notice %></p>
 <% score = 0%>
 <% count =0%>
-  <header>
-        <h1>Question</h1>
-    </header>
+<header>
+  <h1>Question</h1>
+</header>
 <%if user_signed_in?%>
-  
 <form  action="/question/ScoreQuestion" method = "get" id = "question_Form">
- <input type="hidden" id="num_of_question" name="num_of_question" value = "<%=params["Num_Question"]%>" >
+  <input type="hidden" id="num_of_question" name="num_of_question" value = "<%=params["Num_Question"]%>" >
   <input type="hidden" id="id_of_question" name="id_of_question" value = "<%=@id_question%>" >
-    
-<div class="card">
-<span id="countdown" style="font-weight: bold;"></span>
-</div>
-<div class="test-continer">
- <%@question.each do |question|%> 
- <%if count < params["Num_Question"].to_i%>
- <%count = count +1%>
- <div class="quiz-container" id="quiz">
-    <div class="quiz-header">
-  <div style="font-weight: bold; font-size : 1.25em">Question Number <%=count%>:<br> </div>
-  <div>&emsp;<%= question['quetion'] %></div>
-      <ul>
-         <li>
-          <input type="radio" name="<%=question['id']%>" id="a" value= "1" class="answer">
-          <td><%= question['a1'] %></td>
-        </li>
-        <li>
-          <input type="radio" name="<%=question['id']%>" id="b" value= "2" class="answer">
-          <td><%= question['a2'] %></td>
-        </li>
-        <li>
-          <input type="radio" name="<%=question['id']%>" id="c" value= "3" class="answer">
-          <td><%= question['a3']%></td>
-        </li>
-        <li>
-          <input type="radio" name="<%=question['id']%>" id="d" value= "4" class="answer">
-          <td><%= question['a4'] %></td>
-        </li> 
-      </ul>   
-      <%end%>
-     <% end %>
-    </div>
-    <button id="submit" onclick="submitForm()">Submit</button>
+  <div class="card">
+    <span id="countdown" style="font-weight: bold;"></span>
   </div>
-  </form>
-  <script>
+  <div class="test-continer">
+    <%@question.each do |question|%> 
+    <%if count < params["Num_Question"].to_i%>
+    <%count = count +1%>
+    <div class="quiz-container" id="quiz">
+      <div class="quiz-header">
+        <div style="font-weight: bold; font-size : 1.25em">Question Number <%=count%>:<br> </div>
+        <div>&emsp;<%= question['quetion'] %></div>
+        <ul>
+          <li>
+            <input type="radio" name="<%=question['id']%>" id="a" value= "1" class="answer">
+            <td><%= question['a1'] %></td>
+          </li>
+          <li>
+            <input type="radio" name="<%=question['id']%>" id="b" value= "2" class="answer">
+            <td><%= question['a2'] %></td>
+          </li>
+          <li>
+            <input type="radio" name="<%=question['id']%>" id="c" value= "3" class="answer">
+            <td><%= question['a3']%></td>
+          </li>
+          <li>
+            <input type="radio" name="<%=question['id']%>" id="d" value= "4" class="answer">
+            <td><%= question['a4'] %></td>
+          </li> 
+        </ul>   
+      <%end%>
+    <% end %>
+  </div>
+  <button id="submit" onclick="submitForm()">Submit</button>
+</div>
+</form>
+<script>
 var timeInSecs;
 var ticker;
 function param(name) {
@@ -82,6 +80,6 @@ startTimer(5); //   4 minutes in seconds
 </script>
 <%end%>
 <br>
-    <footer>
-        <p>View my project <a href="#">NguyenExam&trade;</a></p>
-    </footer>
+<footer>
+  <p>View my project <a href="#">NguyenExam&trade;</a></p>
+  </footer>
