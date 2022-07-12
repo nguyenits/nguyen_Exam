@@ -1,0 +1,43 @@
+<div style="padding: 2em 4em;">
+<table>
+   <%if current_user.role== "admin" %>
+   <tr class="tes_user">
+     <th>username</th>
+     <th>email</th>
+     <th>topic</th>
+     <th>score</th> 
+     <th>created_at</th>
+     <th></th>
+   </tr>
+       <% @user.each do |user| %>
+      <%@testofuser = Testofuser.where(userID: user.id )%>
+        <% @testofuser.each do |testofuser| %>
+        <tr class="tes_user">
+          <td><%=user.username%> </td>
+          <td><%=user.email%> </td>
+          <td><%= testofuser[:topic] %></td>
+          <td><%= testofuser['score'].to_f.round(2) %></td>
+          <td><%=testofuser['created_at']%>
+          <td><%= link_to 'Show', testofuser_path(testofuser['id'])%></td>
+        </tr>
+        <% end %>
+    <% end %>
+   <%else%>
+ <tr class="tes_user">
+  <th>topic</th>
+    <th>created_at</th>
+    <th>score</th>
+    <th></th>
+  </tr>
+    <% @testofuser.each do |testofuser| %>
+      <tr class="tes_user">
+        <td><%= testofuser[:topic] %></td>
+        <td><%= testofuser.created_at%>
+        <td><%= testofuser.score.to_f.round(2) %></td> 
+        <td><%= link_to 'Show', testofuser %></td>
+      </tr>
+    <% end %>       
+    <%end%>
+  </tbody>
+</table>
+</div>

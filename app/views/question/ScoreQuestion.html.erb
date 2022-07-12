@@ -89,6 +89,7 @@
    <%test_of_users.userID = current_user.id.to_s%>
    <%test_of_users.test = anser%>
    <%test_of_users.score = score.round(2)%>
+    <%test_of_users.topic = params[:topic]%>
    <%test_of_users.save%>
     <%= link_to 'Do it again', question_index_path(:Num_Question => params["num_of_question"]) %>
 </div>

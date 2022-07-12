@@ -4,16 +4,11 @@ before_action :authenticate_user!, only: [:index, :new]
   def index
     @question_admin = Question.order(:id)
     id_of_question = Array.new
-    scrip = String.new
-    paramnum = params[:Num_Question].to_i 
-    paramslevel = params[:level_Question]
-    scrip = "SELECT * FROM questions  WHERE level = '"+paramslevel+"' ORDER BY RANDOM() LIMIT "+(paramnum.to_s)
-    
-    @question = ActiveRecord::Base.connection.exec_query(scrip).to_a  
+    @question = Question.where(level: params[:level_Question], role: params[:topic]).order("RANDOM()").limit(params[:Num_Question])
     @question.each do |question|  
       id_of_question.push(question['id'].to_i)
     end
-    @id_question  = id_of_question
+    @id_question  = id_of_question.sort
   end
   def new
     @question = Question.new
@@ -22,12 +17,8 @@ before_action :authenticate_user!, only: [:index, :new]
 
   end
   def ScoreQuestion
-    listQuestion = params[:id_of_question].to_s
-    listQuestion["["] = "("
-    listQuestion["]"] = ")"
-    scrip = "Select * From questions where id IN " + listQuestion
-    @question = ActiveRecord::Base.connection.exec_query(scrip).to_a  
-
+    listQuestion = params[:id_of_question].tr('[]', '').split(',').map(&:to_i)
+    @question = Question.where('id IN (?)', listQuestion)
   end
   def admin_indexquestion
     @pagy, @question = pagy(Question.all, items: 30)

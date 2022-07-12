@@ -3,13 +3,23 @@ class TestofuserController < ApplicationController
   before_action :set_testofuser, only: %i[ show edit update destroy ]
     def index
       @testofuser = Testofuser.where(userID: current_user.id)
-scrip = " SELECT * FROM testofusers  ORDER BY CAST(score AS FLOAT) desc"
-      @testofuserforadmin =  ActiveRecord::Base.connection.exec_query(scrip).to_a  
+      scrip = " SELECT * FROM testofusers  ORDER BY CAST(score AS FLOAT) desc"
+      @testofuserforadmin =  ActiveRecord::Base.connection.exec_query(scrip)
       @User = User.order(:id)
     end
     def new
  
     end
+
+    def search
+      if (current_user.id ==1)
+    @user = User.where("username LIKE?","%"+params[:q]+"%") 
+      else
+      @testofuser = Testofuser.where("topic LIKE?","%"+params[:q]+"%") 
+      end
+
+    end
+
     def show  
       @question = Question.order(:id)
     end 
