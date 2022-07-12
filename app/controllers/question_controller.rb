@@ -1,11 +1,9 @@
 class QuestionController < ApplicationController
- before_action :set_question, only: %i[ show edit update destroy ]
-
   def index
     @question_admin = Question.order(:id)
     id_of_question = Array.new
-
     @question = Question.where(level: params[:level_Question], role: params[:topic]).order("RANDOM()").limit(params[:Num_Question])
+
     @question.each do |question|  
       id_of_question.push(question['id'].to_i)
     end
@@ -21,14 +19,10 @@ class QuestionController < ApplicationController
   def ScoreQuestion
     listQuestion = params[:id_of_question].tr('[]', '').split(',').map(&:to_i)
     @question = Question.where('id IN (?)', listQuestion)
-
   end
   def admin_indexquestion
     @pagy, @question = pagy(Question.all, items: 30)
   end
- 
-
-
   def edit  
    
   end

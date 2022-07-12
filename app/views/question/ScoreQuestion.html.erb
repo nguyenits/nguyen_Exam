@@ -1,30 +1,30 @@
-  <header>
-        <h1>Your Test</h1>
-    </header>
+<header>
+  <h1>Your Test</h1>
+</header>
 <p id="notice"><%= notice %></p>
 <% anser = String.new%>
-  <%id_of_question = params[:id_of_question]%>
-  <%= hidden_field_tag :remaining_time, @remaining_time %>
-  <%score = 0%>
-  <%count =1%>
-  <%hs = 10/(params[:num_of_question].to_f)%>          
+<%id_of_question = params[:id_of_question]%>
+<%= hidden_field_tag :remaining_time, @remaining_time %>
+<%score = 0%>
+<%count =1%>
+<%hs = 10/(params[:num_of_question].to_f)%>          
 <%sq = id_of_question.split(",").first%>
- <%@question.each do |question|%> 
- <%user_ans = params[(question['id']).to_s].to_s%>
- <%if sq.include? question['id'].to_s%>
-  <%if user_ans.eql?   question['ans'].to_s%>
-       <%score = score + hs %>
-  <%end%>
- <%id_of_question.slice! sq+","%> 
- <%sq = id_of_question.split(",").first%>
+<%@question.each do |question|%> 
+  <%user_ans = params[(question['id']).to_s].to_s%>
+  <%if sq.include? question['id'].to_s%>
+    <%if user_ans.eql?   question['ans'].to_s%>
+      <%score = score + hs %>
+    <%end%>
+    <%id_of_question.slice! sq+","%> 
+    <%sq = id_of_question.split(",").first%>
       <%count = count +1  %>
       <ul>
-         <%if params[(question['id']).to_s].present?%>
+        <%if params[(question['id']).to_s].present?%>
           <%paramQuestion = params[(question['id']).to_s].to_s%>
           <%anser = anser + question['id'].to_s+":"+paramQuestion+","%>       
-             <%else%>
-            <%anser = anser + question['id'].to_s+":"+"not anser,"%>
-             <%end%>
+        <%else%>
+          <%anser = anser + question['id'].to_s+":"+"not anser,"%>
+        <%end%>
       </ul>    
       <%end%>
      <%end%>
@@ -36,9 +36,10 @@
    <%test_of_users.save%>
    <%@question = Question.all%>
    <%@testofuser =  test_of_users%>
+
 <%= render "testofuser/test" %>
-   <%ExampleMailer.sample_email(current_user).deliver_now%>
-    <%= link_to 'Do it again', question_index_path(:Num_Question => params["num_of_question"]) %>
-    <footer>
-        <p>View my project <a href="#">NguyenExam&trade;</a></p>
-    </footer>
+<%ExampleMailer.sample_email(current_user).deliver_now%>
+<%= link_to 'Do it again', question_index_path(:Num_Question => params["num_of_question"]) %>
+<footer>
+  <p>View my project <a href="#">NguyenExam&trade;</a></p>
+</footer>
