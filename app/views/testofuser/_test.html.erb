@@ -5,16 +5,17 @@
        <%test_of_question.slice! qs+":"%>
  <%ans = test_of_question.split(",").first%>
    <%test_of_question.slice! ans +","%>
+   <div class="quiz-container" id="quiz1">
  <%@question.each do |question|%> 
  <%if qs.include? question.id.to_s%>
  <%user_ans = ans%>
 <%count = count+1%>
-<div class="quiz-container" id="quiz1">
+
     <div class="quiz-header">
       <td>Question Number <%=count%>:<%= question.quetion %></td>
       <ul>
          <li>
-          <td><%=question.a1%></td>
+          <td>A.<%=question.a1%></td>
             <%if question.ans.eql? "1"  %> 
               <%= image_tag "true.jpg", class: "image_size", size: "5x5" %>
             <%else%>
@@ -26,7 +27,7 @@
               <%= image_tag "xdo.jpg", class: "image_size" %> 
               <%end%>
         <li>
-          <td><%= question.a2 %></td>
+          <td>B.<%= question.a2 %></td>
              <%if question.ans.eql? "2"  %> 
     <%= image_tag "true.jpg", class: "image_size" %> 
              <%else%>
@@ -39,7 +40,7 @@
               <%end%>
         </li>
         <li>
-            <td><%=question.a3%>  </td>
+            <td>C.<%=question.a3%>  </td>
              <%if question.ans.eql? "3"  %> 
               <%= image_tag "true.jpg", class: "image_size" %> 
               <%else%>
@@ -52,7 +53,7 @@
               <%end%>
         </li>
         <li>
-          <td><%= question.a4 %></td>
+          <td>D.<%= question.a4 %></td>
              <%if question.ans.eql? "4"  %> 
            
                <%= image_tag "true.jpg", class: "image_size" %> 
@@ -75,8 +76,9 @@
    <%test_of_question.slice! ans +","%> 
       <%end%>
      <%end%>
+      </div>
      <%end%>
-    </div>
+    
   </p>
 </div>
-</div>
+

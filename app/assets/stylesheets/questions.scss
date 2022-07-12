@@ -30,7 +30,22 @@
 }
 
 .quiz-header {
-    max-height: 40em;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    text-align: justify;
+    font-family: Tahoma, Verdana, sans-serif;
+    font-size: 1em;
+    .image_size {
+        width: 1%;
+        margin-bottom: 8px;
+    }
+    padding: 0em 2em;
+    h2 {
+        text-align: left;
+    }
+    ul {
+        list-style: none;
+    }
 }
 
 .editques-container {
@@ -139,6 +154,10 @@
         text-align: justify;
         font-family: Tahoma, Verdana, sans-serif;
         font-size: 1em;
+        .image_size {
+            width: 1%;
+            margin-bottom: 8px;
+        }
         h2 {
             text-align: left;
         }
