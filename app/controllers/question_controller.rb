@@ -1,14 +1,16 @@
 class QuestionController < ApplicationController
-before_action :set_question, only: %i[ show edit update destroy ]
-before_action :authenticate_user!, only: [:index, :new]
+ before_action :set_question, only: %i[ show edit update destroy ]
+
   def index
     @question_admin = Question.order(:id)
     id_of_question = Array.new
+
     @question = Question.where(level: params[:level_Question], role: params[:topic]).order("RANDOM()").limit(params[:Num_Question])
     @question.each do |question|  
       id_of_question.push(question['id'].to_i)
     end
     @id_question  = id_of_question.sort
+
   end
   def new
     @question = Question.new
@@ -19,6 +21,7 @@ before_action :authenticate_user!, only: [:index, :new]
   def ScoreQuestion
     listQuestion = params[:id_of_question].tr('[]', '').split(',').map(&:to_i)
     @question = Question.where('id IN (?)', listQuestion)
+
   end
   def admin_indexquestion
     @pagy, @question = pagy(Question.all, items: 30)
@@ -49,6 +52,7 @@ before_action :authenticate_user!, only: [:index, :new]
       if @question.update(question_params)
         format.html { redirect_to question_url(@question), notice: "Question was successfully updated." }
         format.json { render :show, status: :ok, location: @question }
+        puts "thanh cong"
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @question.errors, status: :unprocessable_entity }

@@ -1,15 +1,6 @@
 
-<%= form_with model: @question , url: { action: "create" } do |form| %> 
-  <% if @question.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this product from being saved:</h2>
-      <ul>
-        <% @question.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: @question , local: true, mothod: :GET, url: { action: "create" } ) do |form| %> 
+
 <h2>Enter user details</h2>
    <div>
     <%= form.label :quetion, style: "display: block" %>
@@ -42,10 +33,11 @@
   </div>
 <div>
     <%= form.label :level, style: "display: block" %>
-     <%= form.select :level, options_for_select([["ez", "ez"], ["normal", "normal"],["hard", "hard"]]) %>
+     <%= form.select :level, Rails.application.config_for(:settings).dig(:post_categories) %>
   </div>
 <div>
 <%= form.label :ans, style: "display: block" %>
+
 <%= form.select :ans, options_for_select([["ans 1", "1"], ["ans 2", "2"],["ans 3", "3"],["ans 4", "4"]]) %>
 </div>
 
