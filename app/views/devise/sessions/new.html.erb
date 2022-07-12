@@ -1,17 +1,23 @@
-<h2>Log in</h2>
-
+<body>
+    <header>
+        <h1>Login NguyenExam</h1>
+    </header>
+    <main>
+        <div id="login_form" class="form_class">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+
+  <div class="form_div">
+
     <%= f.label :login %><br />
     <%= f.text_field  :login, autofocus: true%>
   </div>
 
-  <div class="field">
+  <div class="form_div">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="form_div">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
@@ -23,11 +29,16 @@
      <div >
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-
   </div>
 <% end %>
+        </div>
+    </main>
+</body>
 
-<%= render "devise/shared/links" %>
+<script>
+const validarLogin = () => {
+  alert('Teste');
+}</script>
+    <footer>
+        <p>View my project <a href="#">NguyenExam&trade;</a></p>
+    </footer>
