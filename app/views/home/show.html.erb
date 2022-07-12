@@ -1,26 +1,25 @@
-<p style="color: green"><%= notice %></p>
-  <div>
-<form action="/question" method = "get">
-
-<% if user_signed_in?  %>
-<h2>Welcome <%=current_user.username%>:</h2> 
-   <%if current_user.role != "admin"%>
-     <p>Do Exesice</p>
-<div class="btn-group" role="group" aria-label="Basic example">
- <select class="form-select" aria-label="Default select example" name ="Num_Question">
-  <option value="20">20 Question</option>
-  <option value="25">25 Question</option>
-  <option value="30">30 QUestion</option>
-</select>
-<button type="submit" class="btn btn-primary">start</button>
-<%end%>
-<%if current_user.role =="admin"%>
-
-<%= link_to 'Edit Question', admin_indexquestion_question_index_path %> |
-<%= link_to 'Edit Account', user_index_path %>
-<%end%>
-<% else%>
-<p>Please Login </p>
-<%= link_to 'Login', new_user_session_path,method: :get , class: 'nav-link'%>
-<% end%>
-</form>
+<header>
+   <h1>Home Screen</h1>
+</header>
+<tbody>
+   <div class="home-container">  
+     <form action="/question" method = "get">
+     <% if user_signed_in?  %>
+     <h2>Welcome <%=current_user.username%>:</h2> 
+     <%if current_user.role != "admin"%>
+       <%= render "home"%> 
+     <%end%>
+     <%if current_user.role =="admin"%>
+       <%= link_to 'Edit Question', admin_indexquestion_question_index_path %> |
+       <%= link_to 'Edit Account', user_index_path %>
+     <%end%>
+     <% else%>
+       <p>Please Login </p>
+       <%= link_to 'Login', new_user_session_path,method: :get , class: 'nav-link'%>
+     <% end%>
+     </form>
+   </div>
+</tbody> 
+<footer>
+   <p>View my project <a href="#">NguyenExam&trade;</a></p>
+</footer>

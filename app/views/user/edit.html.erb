@@ -1,10 +1,12 @@
 <p style="color: green"><%= notice %></p>
 <div>
 <%if current_user.role == "admin"%>
+<div classe="edituser-contanier">
+
 <%= render 'form', user: @user  %>
   <%= link_to "Back to list", user_path%>
+  <div>
 </div>
-
 <%else%>
 <h1>You don't have permision</h1>
 <%end%>

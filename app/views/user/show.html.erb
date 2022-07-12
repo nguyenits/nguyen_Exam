@@ -1,11 +1,8 @@
 <p style="color: green"><%= notice %></p>
 <div>
-
 <%if current_user.role == "admin"%>
 <%= render "user/user" %>
   <%= link_to "Back to list", testofuser_path%>
-
-
 <%else%>
 <h1>You don't have permision</h1>
 <%end%>

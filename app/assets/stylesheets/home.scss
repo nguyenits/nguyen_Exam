@@ -1,3 +1,28 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+    // Place all the styles related to the home controller here.
+    // They will automatically be included in application.css.
+    // You can use Sass (SCSS) here: https://sass-lang.com/
+    .container-fluid {
+        height: 4em;
+        li {
+            padding-left: 1em;
+        }
+        background-color: rgba(0, 0, 0, 0.171);
+    }
+    
+    .navbar {
+        padding: 0;
+    }
+    
+    .home-container {
+        text-align: center;
+        background-color: rgb(188, 232, 238);
+        margin: auto;
+        padding: 15em 15em;
+        .form-select {
+            padding: .375rem 2.25rem .375rem .75rem;
+            max-width: 40m;
+        }
+        .btn-group {
+            padding: .2rem 2.25rem .375rem .75rem;
+        }
+    }

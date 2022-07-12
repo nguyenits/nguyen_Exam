@@ -1,27 +1,40 @@
-<table>
   <thead>
     <tr> <th colspan="3"></th>
-
+    <header>
+        <h1>Manager Account</h1>
+    </header>
     <%count =0 %>
     </tr>
   </thead>
   <tbody>
-   <%if current_user.role== "admin" %>
+  <div class="edituser-contanier" style="padding: 2em 4em;">
+  <table>
+
+    <tr class="edituser">
+   <th>username</th>
+     <th>email</th>
+     <th>action</th>
+    </tr>
+  
+  <tbody>
+     <%if current_user.role== "admin" %>
        <% @user.each do |useradmin| %>
        <%if (count !=0)%>
-      <tr>
-       <th>username: <%=useradmin.username%> </th>
-       </tr>
-       <tr>
-       <th>email: <%=useradmin.email%></th>
+     
+    <tr class="edituser">
+       <td><%=useradmin.username%> </td>
+         <td><%=useradmin.email%> </td>
          <td><%= link_to 'Edit', edit_user_path(useradmin) %></td>
-         
-      </tr>
+     </tr>
       <%end%>
       <%count = count +1%>
     <% end %>
-   <%else%>
- <h1>You don't have permision</h1>
-    <%end%>
+      </tr>
+    <% end %>
   </tbody>
+
 </table>
+ 
+</div>    <footer>
+        <p>View my project <a href="#">NguyenExam&trade;</a></p>
+    </footer>
