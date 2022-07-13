@@ -2,13 +2,13 @@ class QuestionController < ApplicationController
   def index
     @question_admin = Question.order(:id)
     id_of_question = Array.new
-    param_num = params[:Num_Question]
-    params_level = params[:level_Question]
-    @question = Question.order("RANDOM()").limit(param_num).where(level: params_level)
+    @question = Question.where(level: params[:level_Question], role: params[:topic]).order("RANDOM()").limit(params[:Num_Question])
+
     @question.each do |question|  
       id_of_question.push(question['id'].to_i)
     end
-    @id_question  =  id_of_question.sort
+    @id_question  = id_of_question.sort
+
   end
   def new
     @question = Question.new

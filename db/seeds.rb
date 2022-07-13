@@ -20,6 +20,57 @@ skips = Question.pluck(:id).count
   )  
  
   question.save
+
+  question = Question.new(
+    quetion: Faker::Lorem.question(word_count: 50),
+    a1: Faker::Lorem.paragraph_by_chars(number: 10),
+    a2: Faker::Lorem.paragraph_by_chars(number: 10),
+    a3: Faker::Lorem.paragraph_by_chars(number: 10),
+    a4: Faker::Lorem.paragraph_by_chars(number: 10),
+    ans: 1,
+    level: "ez",
+    role: "tu nhien"
+  )  
+ 
+  question.save
+
+  question = Question.new(
+    quetion: Faker::Lorem.question(word_count: 50),
+    a1: Faker::Lorem.paragraph_by_chars(number: 10),
+    a2: Faker::Lorem.paragraph_by_chars(number: 10),
+    a3: Faker::Lorem.paragraph_by_chars(number: 10),
+    a4: Faker::Lorem.paragraph_by_chars(number: 10),
+    ans: 2,
+    level: "ez",
+    role: "esport"
+  )  
+ 
+  question.save
+  question = Question.new(
+    quetion: Faker::Lorem.question(word_count: 50),
+    a1: Faker::Lorem.paragraph_by_chars(number: 10),
+    a2: Faker::Lorem.paragraph_by_chars(number: 10),
+    a3: Faker::Lorem.paragraph_by_chars(number: 10),
+    a4: Faker::Lorem.paragraph_by_chars(number: 10),
+    ans: 1,
+    level: "normal",
+    role: "tu nhien"
+  )  
+ 
+  question.save
+
+  question = Question.new(
+    quetion: Faker::Lorem.question(word_count: 50),
+    a1: Faker::Lorem.paragraph_by_chars(number: 10),
+    a2: Faker::Lorem.paragraph_by_chars(number: 10),
+    a3: Faker::Lorem.paragraph_by_chars(number: 10),
+    a4: Faker::Lorem.paragraph_by_chars(number: 10),
+    ans: 2,
+    level: "normal",
+    role: "esport"
+  )  
+ 
+  question.save
   question1 = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
     a1: Faker::Lorem.paragraph_by_chars(number: 10),
@@ -33,6 +84,7 @@ skips = Question.pluck(:id).count
   ) 
   
   question1.save
+
   question2 = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
     a1: Faker::Lorem.paragraph_by_chars(number: 10),
@@ -44,7 +96,31 @@ skips = Question.pluck(:id).count
     role: "xa hoi"
   
   )  
+  question = Question.new(
+    quetion: Faker::Lorem.question(word_count: 50),
+    a1: Faker::Lorem.paragraph_by_chars(number: 10),
+    a2: Faker::Lorem.paragraph_by_chars(number: 10),
+    a3: Faker::Lorem.paragraph_by_chars(number: 10),
+    a4: Faker::Lorem.paragraph_by_chars(number: 10),
+    ans: 1,
+    level: "hard",
+    role: "tu nhien"
+  )  
+ 
+  question.save
 
+  question = Question.new(
+    quetion: Faker::Lorem.question(word_count: 50),
+    a1: Faker::Lorem.paragraph_by_chars(number: 10),
+    a2: Faker::Lorem.paragraph_by_chars(number: 10),
+    a3: Faker::Lorem.paragraph_by_chars(number: 10),
+    a4: Faker::Lorem.paragraph_by_chars(number: 10),
+    ans: 2,
+    level: "hard",
+    role: "esport"
+  )  
+ 
+  question.save
   question2.save
   question3 = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
@@ -58,6 +134,31 @@ skips = Question.pluck(:id).count
   
   )  
   question3.save
+  question = Question.new(
+    quetion: Faker::Lorem.question(word_count: 50),
+    a1: Faker::Lorem.paragraph_by_chars(number: 10),
+    a2: Faker::Lorem.paragraph_by_chars(number: 10),
+    a3: Faker::Lorem.paragraph_by_chars(number: 10),
+    a4: Faker::Lorem.paragraph_by_chars(number: 10),
+    ans: 1,
+    level: "very hard",
+    role: "tu nhien"
+  )  
+ 
+  question.save
+
+  question = Question.new(
+    quetion: Faker::Lorem.question(word_count: 50),
+    a1: Faker::Lorem.paragraph_by_chars(number: 10),
+    a2: Faker::Lorem.paragraph_by_chars(number: 10),
+    a3: Faker::Lorem.paragraph_by_chars(number: 10),
+    a4: Faker::Lorem.paragraph_by_chars(number: 10),
+    ans: 2,
+    level: "very hard",
+    role: "esport"
+  )  
+ 
+  question.save
 end
 
 user = User.new(

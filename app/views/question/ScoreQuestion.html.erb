@@ -26,15 +26,17 @@
           <%anser = anser + question['id'].to_s+":"+"not anser,"%>
         <%end%>
       </ul>    
-    <%end%>
-  <%end%>
-<%test_of_users = Testofuser.new()%>
-<%test_of_users.userID = current_user.id.to_s%>
-<%test_of_users.test = anser%>
-<%test_of_users.score = score.round(2)%>
-<%test_of_users.save%>
-<%@question = Question.all%>
-<%@testofuser =  test_of_users%>
+      <%end%>
+     <%end%>
+     <%test_of_users = Testofuser.new()%>
+   <%test_of_users.userID = current_user.id.to_s%>
+   <%test_of_users.test = anser%>
+   <%test_of_users.score = score.round(2)%>
+    <%test_of_users.topic = params[:topic]%>
+   <%test_of_users.save%>
+   <%@question = Question.all%>
+   <%@testofuser =  test_of_users%>
+
 <%= render "testofuser/test" %>
 <%ExampleMailer.sample_email(current_user).deliver_now%>
 <%= link_to 'Do it again', question_index_path(:Num_Question => params["num_of_question"]) %>

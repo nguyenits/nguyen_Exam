@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :user
   devise_for :users
+  get 'search',to: "testofuser#search"
   as :user do 
     root to: "home#show"
     get "login" => "devise/sessions#new"
