@@ -6,7 +6,7 @@
 <%= select_tag(:level_Question, options_for_select([["easy","ez"],["medium","normal"],["difficult","hard"],["very difficult","very hard"]], params[:level_Question] ), class:"select") %>
   </div>
   <div class="btn-group2" role="group" aria-label="Basic example">
-<%= select_tag(:level_Question, options_for_select([["xa hoi","xa hoi"],["tu nhien","tu nhien"],["esport","esport"]], params[:topic] ), class:"select") %>
+<%= select_tag(:topic, options_for_select([["xa hoi","xa hoi"],["tu nhien","tu nhien"],["esport","esport"]], params[:topic] ), class:"select") %>
   </div>
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <input type="submit" value="Start">

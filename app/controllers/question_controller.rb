@@ -3,12 +3,11 @@ class QuestionController < ApplicationController
     @question_admin = Question.order(:id)
     id_of_question = Array.new
     @question = Question.where(level: params[:level_Question], role: params[:topic]).order("RANDOM()").limit(params[:Num_Question])
-
     @question.each do |question|  
       id_of_question.push(question['id'].to_i)
     end
     @id_question  = id_of_question.sort
-
+byebug
   end
   def new
     @question = Question.new
