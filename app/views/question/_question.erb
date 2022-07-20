@@ -25,7 +25,17 @@
     <strong>Ans 4:</strong>
     <%= @question.a4 %>
   </p>
-  
+<%count =5%>
+  <%if @question.answer.any?%>
+      <% @question.answer.each do |ans| %>
+        <p>
+        <strong>Ans <%=count%>:</strong>
+        <%count = count +1%>
+        <%= ans.moreans %>
+        </p>   
+      <%end%>
+    <%end%>
+
   <p>
     <strong> Anser:</strong>
     <%= @question.ans %>

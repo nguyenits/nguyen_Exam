@@ -2,6 +2,7 @@ import { Application } from "@hotwired/stimulus"
 
 const application = Application.start()
     //= require jquery.countdown
+    //= require cocoon
     // Configure Stimulus development experience
 application.debug = false
 window.Stimulus = application
@@ -14,7 +15,11 @@ var countdown = function() {
         }
     });
 }
+import { Application } from "stimulus"
+import { definitionsFromContext } from "stimulus/webpack-helpers"
 
+const application = Application.start()
+const context = require.context("../controllers", true, /\.js$/)
+application.load(definitionsFromContext(context))
 document.addEventListener('turbolinks:load', countdown);
 $(document).on('page:update', countdown);
-export { application }

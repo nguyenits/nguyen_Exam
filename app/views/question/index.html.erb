@@ -1,5 +1,4 @@
-<% score = 0%>
-<% count =0%>
+<% score = 0,count =0,countans = 4%>
 <header>
   <h1>Question</h1>
 </header>
@@ -37,6 +36,16 @@
           <input type="radio" name="<%=question['id']%>" id="d" value= "4" class="answer">
           <td><%= question['a4'] %></td>
         </li> 
+        <%if question.answer.any?%>
+          <% question.answer.each do |ans| %>
+          <li>
+          <%count =count +1%>
+          <input type="radio" name="<%=question['id']%>" id=<%=count%> value= <%=count%> class="answer">
+          <td><%=ans.moreans%></td>
+          </li>
+          <%end%>
+        <%end%>
+     
       </ul>   
 
       <%end%>

@@ -1,46 +1,48 @@
-
-<%= form_with(model: @question , local: true, mothod: :GET, url: { action: "create" } ) do |form| %> 
-
+<%= form_with(model: @question , local: true, mothod: :GET, url: { action: "create" } ) do |f| %> 
+<%count =4%>
 <h2>Enter user details</h2>
    <div>
-    <%= form.label :quetion, style: "display: block" %>
-    <%= form.text_field :quetion %>
+    <%= f.label :quetion, style: "display: block" %>
+    <%= f.text_field :quetion %>
   </div>
 
   <div>
-    <%= form.label :a1, style: "display: block" %>
-    <%= form.text_field :a1 %>
+    <%= f.label :a1, style: "display: block" %>
+    <%= f.text_field :a1 %>
   </div>
 
   <div>
-    <%= form.label :a2, style: "display: block" %>
-    <%= form.text_field :a2 %>
+    <%= f.label :a2, style: "display: block" %>
+    <%= f.text_field :a2 %>
   </div>
 
   <div>
-    <%= form.label :a3, style: "display: block" %>
-    <%= form.text_field :a3 %>
+    <%= f.label :a3, style: "display: block" %>
+    <%= f.text_field :a3 %>
   </div>
 
   <div>
-    <%= form.label :a4, style: "display:  block" %>
-    <%= form.text_field :a4 %>
+    <%= f.label :a4, style: "display: block" %>
+    <%= f.text_field :a4 %>
   </div>
 
  <div>
-    <%= form.label :role, style: "display: block" %>
-    <%= form.text_field :role %>
+    <%= f.label :role, style: "display: block" %>
+    <%= f.text_field :role %>
   </div>
 <div>
-    <%= form.label :level, style: "display: block" %>
-     <%= form.select :level, Rails.application.config_for(:settings).dig(:post_categories) %>
+  <%= f.label :level, style: "display: block" %>
+  <%= f.select :level, options_for_select([["ez", "ez"], ["normal", "normal"],["hard", "hard"],["very hard", "very hard"]]) %>
+  </div>
+  <div>
+  <%= f.label :ans, style: "display: block" %>
+  <%= f.select :ans, options_for_select([["1", "1"], ["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"],["8","8"]]) %>
   </div>
 <div>
-<%= form.label :ans, style: "display: block" %>
-
-<%= form.select :ans, options_for_select([["ans 1", "1"], ["ans 2", "2"],["ans 3", "3"],["ans 4", "4"]]) %>
+    <%=link_to_add_fields "Add answer", f, :answer %> 
 </div>
-</h2>
-  <%= form.submit %>
+
+<div>
+  <%= f.submit %>
 </div>
 <% end %>

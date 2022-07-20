@@ -1,0 +1,10 @@
+<div class="nested-fields">
+    <div>
+      <%= f.label :moreans , style: "display: block"%>
+      <%= f.text_field :moreans %>
+    </div>
+    <%= f.hidden_field :_destroy %>
+    <div>
+      <%= link_to "Remove", '#', class: "remove_fields" %>
+    </div>
+</div>
