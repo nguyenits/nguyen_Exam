@@ -11,6 +11,10 @@
      <th>Anser 2</th>
      <th>Anser 3</th>
      <th>Anser 4</th>
+     <th>Anser 5</th>
+      <th>Anser 6</th>
+      <th>Anser 7</th>
+      <th>Anser 8</th>
      <th>Right anser</th>
      <th>topic</th>
      <th>level</th>
@@ -26,6 +30,19 @@
         <td><%= question.a2 %></td>
         <td><%= question.a3 %></td>
         <td><%= question.a4 %></td>
+      <div>
+      <%count=0%>
+       <%if question.answer.any?%>
+          <% question.answer.each do |ans| %>
+          <%count = count +1%>
+            <td><%= ans.moreans %></td>
+          <%end%>
+        <%end%>
+          <%while count<4%>
+            <td></td>
+            <%count = count+1%>
+          <%end%>
+        </div>
         <td><%= question.ans %></td>
         <td><%= question.role%></td>
         <td><%= question.level%></td>

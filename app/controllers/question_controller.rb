@@ -1,13 +1,13 @@
 class QuestionController < ApplicationController
+  before_action :set_question, only: %i[ show edit update destroy ]
   def index
     @question_admin = Question.order(:id)
     id_of_question = Array.new
-    @question = Question.where(level: params[:level_Question], role: params[:topic]).order("RANDOM()").limit(params[:Num_Question])
+    @question = Question.where(level: params[:level_Question], role: "params[:topic]").order("RANDOM()").limit(params[:Num_Question])
     @question.each do |question|  
       id_of_question.push(question['id'].to_i)
     end
     @id_question  = id_of_question.sort
-byebug
   end
   def new
     @question = Question.new
@@ -20,7 +20,7 @@ byebug
     @question = Question.where('id IN (?)', listQuestion)
   end
   def admin_indexquestion
-    @pagy, @question = pagy(Question.all, items: 30)
+    @pagy, @question = pagy(Question.order(:id), items: 30)
   end
   def edit  
    
@@ -69,6 +69,7 @@ byebug
     end
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:quetion, :a1, :a2, :a3, :a4, :ans, :role, :level)
+   
+      params.require(:question).permit(:quetion, :a1, :a2, :a3, :a4, :ans, :role, :level, answer_attributes: [:moreans, :_destroy])
     end
 end
