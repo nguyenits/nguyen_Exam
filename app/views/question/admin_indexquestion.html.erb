@@ -5,20 +5,19 @@
 <table>
   <thead>
     <tr class="editques">
-     <th>ID</th>
-     <th>Question</th>
-     <th>Anser 1</th>
-     <th>Anser 2</th>
-     <th>Anser 3</th>
-     <th>Anser 4</th>
-     <th>Anser 5</th>
+      <th>ID</th>
+      <th>Question</th>
+      <th>Anser 1</th>
+      <th>Anser 2</th>
+      <th>Anser 3</th>
+      <th>Anser 4</th>
+      <th>Anser 5</th>
       <th>Anser 6</th>
       <th>Anser 7</th>
       <th>Anser 8</th>
-     <th>Right anser</th>
-     <th>topic</th>
-     <th>level</th>
-     <th colspan="3">action</th>
+      <th>topic</th>
+      <th>level</th>
+      <th colspan="3">action</th>
     </tr>
   </thead>
   <tbody>
@@ -26,24 +25,25 @@
       <tr>
         <td><%= question.id %></td>
         <td><%= question.quetion %></td>
-        <td><%= question.a1 %></td>
-        <td><%= question.a2 %></td>
-        <td><%= question.a3 %></td>
-        <td><%= question.a4 %></td>
       <div>
       <%count=0%>
        <%if question.answer.any?%>
           <% question.answer.each do |ans| %>
-          <%count = count +1%>
-            <td><%= ans.moreans %></td>
+            <td>
+              <%color = "black"%>
+              <%if ans.check ==true%> 
+                <%color = "green"%>
+              <%end%>
+              <p style="color:<%=color%>"> <%= ans.moreans %></p>
+        <%count = count +1%>
+        </td>   
+          <%end%>
+          <%while count<8%>
+               <td></td>
+                    <%count = count +1%>
           <%end%>
         <%end%>
-          <%while count<4%>
-            <td></td>
-            <%count = count+1%>
-          <%end%>
         </div>
-        <td><%= question.ans %></td>
         <td><%= question.role%></td>
         <td><%= question.level%></td>
         <td><%= link_to 'Show', question %></td>
