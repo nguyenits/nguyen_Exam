@@ -1,15 +1,15 @@
-     <%count=0%>
+  <%count=0%>
   <% test_of_question = @testofuser.test %>
   <h2>Your Score: <%=@testofuser.score.to_f.round(2)%></h2>
   <%qs = test_of_question.split(":").first%>
   <%test_of_question.slice! qs+":"%>
   <%ans = test_of_question.split(",").first%>
-   <%test_of_question.slice! ans +","%>
-   <div class="quiz-container" id="quiz1">
-  
+  <%test_of_question.slice! ans +","%>
+  <div class="quiz-container" id="quiz1">
+
 <%@question.each do |question|%> 
     
-  <%if qs.include? question.id.to_s%>
+  <%if qs.eql? question.id.to_s%>
     <%user_ans = ans%>
     <%count = count +1%>
     <div class="quiz-container" id="quiz"> 
@@ -17,7 +17,6 @@
     <div style="font-weight: bold; font-size : 1.25em">Question Number <%=count%>:<br> </div>
     <div><%= question['quetion'] %></div>
     <ul> 
-
     <%if question.answer.any?%>
       <% question.answer.each do |ans| %>  
         <td>
@@ -25,8 +24,8 @@
               <%color = "green"%>
               <%if ans.id.to_s.eql? user_ans%>
               <%end%>
-            <%else%>
-              <%if !user_ans.eql? "not anser" or ans.id.to_s.eql? user_ans%>
+            <%else%>    
+              <%if user_ans.eql? "not anser" or ans.id.to_s.eql? user_ans %>
                 <%color = "red"%>
               <%else%>
                 <%color = "black"%>
@@ -48,8 +47,6 @@
   <% end %>
 <%end%>
 </div>
- 
-    
   </p>
 </div>
 
