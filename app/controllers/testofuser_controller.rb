@@ -12,9 +12,9 @@ class TestofuserController < ApplicationController
 
     def search
       if (current_user.id ==1)
-    @user = User.where("username LIKE?","%"+params[:q]+"%") 
+        @user = User.where("username LIKE?","%"+params[:q]+"%") 
       else
-      @testofuser = Testofuser.where("topic LIKE?","%"+params[:q]+"%") 
+        @testofuser = Testofuser.where("topic LIKE?","%"+params[:q]+"%") 
       end
 
     end

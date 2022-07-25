@@ -1,5 +1,6 @@
 class QuestionController < ApplicationController
   before_action :set_question, only: %i[ show edit update destroy ]
+  before_action :set_answer, only: %i[ show edit update destroy ]
   def index
     @question_admin = Question.order(:id)
     id_of_question = Array.new
@@ -40,7 +41,7 @@ class QuestionController < ApplicationController
   end
   
   # PATCH/PUT /questions/1 or /questions/1.json
-  def update
+  def update    
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to question_url(@question), notice: "Question was successfully updated." }
@@ -67,8 +68,11 @@ class QuestionController < ApplicationController
     def set_question
       @question = Question.find(params[:id])
     end
+    def set_answer
+      @Answer = Answer.find(params[:id])
+    end
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:quetion, :role, :level, answer_attributes: [:moreans,:check, :_destroy])
+      params.require(:question).permit(:quetion, :role, :level, answer_attributes: [:id,:moreans,:check, :_destroy])
     end
 end

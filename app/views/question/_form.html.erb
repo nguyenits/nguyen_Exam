@@ -9,7 +9,7 @@
    <%= f.fields_for :answer, Answer.new do |b| %>
       <%= b.label "ans" , style: "display: block"%>
       <%= b.text_field :moreans %>
-      <%= b.check_box :check , name: "1" %>
+      <%= b.check_box :check  %>
       <%= b.hidden_field :_destroy %>
     <% end %>
 </div>
@@ -17,7 +17,7 @@
    <%= f.fields_for :answer, Answer.new do |b| %>
       <%= b.label  "ans"  , style: "display: block"%>
       <%= b.text_field :moreans %>
-      <%= b.check_box :check , name: "1"%>
+      <%= b.check_box :check %>
       <%= b.hidden_field :_destroy %>
     <% end %>
 </div>
@@ -25,7 +25,7 @@
    <%= f.fields_for :answer, Answer.new do |b| %>
       <%= b.label  "ans"  , style: "display: block"%>
       <%= b.text_field :moreans %>
-      <%= b.check_box :check , name: "1"%>
+      <%= b.check_box :check %>
       <%= b.hidden_field :_destroy %>
     <% end %>
 </div>
@@ -33,7 +33,7 @@
    <%= f.fields_for :answer, Answer.new do |b| %>
       <%= b.label  "ans"  , style: "display: block"%>
       <%= b.text_field :moreans %>
-      <%= b.check_box :check , name: "1"%>
+      <%= b.check_box :check %>
       <%= b.hidden_field :_destroy %>
     <% end %>
 </div>  
