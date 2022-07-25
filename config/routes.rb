@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     collection do
       get "ScoreQuestion"
       get "admin_indexquestion"
+      get "user_indexquestion"
     end
   end
   resources :testofuser do

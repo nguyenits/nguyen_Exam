@@ -10,7 +10,7 @@ skips = Question.pluck(:id).count
 (100 - skips).times do |time|
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
- 
+    Belongto: "admin",
     level: "ez",
     role: "xa hoi",
     answer_attributes: [
@@ -27,6 +27,7 @@ skips = Question.pluck(:id).count
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
     level: "ez",
+    Belongto: "admin",
     role: "tu nhien",
     answer_attributes: [
       {moreans: "A1", check: true},
@@ -42,6 +43,7 @@ skips = Question.pluck(:id).count
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
     level: "ez",
+    Belongto: "admin",
     role: "esport",
     answer_attributes: [
       {moreans: "A1", check: true},
@@ -57,7 +59,7 @@ skips = Question.pluck(:id).count
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
     level: "normal",
-   
+    Belongto: "admin",
     role: "tu nhien",
     answer_attributes: [
       {moreans: "A1", check: true},
@@ -73,6 +75,7 @@ skips = Question.pluck(:id).count
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
     level: "normal",
+    Belongto: "admin",
     role: "esport",
     answer_attributes: [
       {moreans: "A1", check: true},
@@ -87,6 +90,7 @@ skips = Question.pluck(:id).count
   question1 = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
     level: "normal",
+    Belongto: "admin",
     role: "xa hoi",
     answer_attributes: [
       {moreans: "A1", check: true},
@@ -103,6 +107,7 @@ skips = Question.pluck(:id).count
   question2 = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
     level: "hard",
+    Belongto: "admin",
     role: "xa hoi",
     answer_attributes: [
       {moreans: "A1", check: true},
@@ -116,6 +121,7 @@ skips = Question.pluck(:id).count
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
     level: "hard",
+    Belongto: "admin",
     role: "tu nhien",
     answer_attributes: [
       {moreans: "A1", check: true},
@@ -131,6 +137,7 @@ skips = Question.pluck(:id).count
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
     level: "hard",
+    Belongto: "admin",
     role: "esport",
     answer_attributes: [
       {moreans: "A1", check: true},
@@ -146,6 +153,7 @@ skips = Question.pluck(:id).count
   question3 = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
     level: "very hard",
+    Belongto: "admin",
     role: "xa hoi",
     answer_attributes: [
       {moreans: "A1", check: true},
@@ -160,6 +168,7 @@ skips = Question.pluck(:id).count
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
     level: "very hard",
+    Belongto: "admin",
     role: "tu nhien",
     answer_attributes: [
       {moreans: "A1", check: true},
@@ -175,6 +184,7 @@ skips = Question.pluck(:id).count
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
     level: "very hard",
+    Belongto: "admin",
     role: "esport",
     answer_attributes: [
       {moreans: "A1", check: true},

@@ -19,6 +19,9 @@
             <li class="nav-item"> 
               <%= link_to 'View All User Test', testofuser_index_path, class: 'nav-link'%>
             </li>
+            <li class="nav-item"> 
+              <%= link_to 'View All Question of User', user_indexquestion_question_index_path, class: 'nav-link'%>
+            </li>
           <%else%>
         </li>
           <li class="nav-item"> 
@@ -26,6 +29,9 @@
           </li>
           <li class="nav-item"> 
             <%= link_to 'edit Password', edit_user_registration_path, class: 'nav-link'%>
+          </li>
+          <li class="nav-item"> 
+            <%= link_to 'send question to admin', new_question_path, class: 'nav-link'%>
           </li>
         <%end%>
       <% else %>
