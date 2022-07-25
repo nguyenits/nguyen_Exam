@@ -1,100 +1,54 @@
      <%count=0%>
-      <% test_of_question = @testofuser.test %>
-      <h2>Your Score: <%=@testofuser.score.to_f.round(2)%></h2>
-      <%qs = test_of_question.split(":").first%>
-       <%test_of_question.slice! qs+":"%>
- <%ans = test_of_question.split(",").first%>
+  <% test_of_question = @testofuser.test %>
+  <h2>Your Score: <%=@testofuser.score.to_f.round(2)%></h2>
+  <%qs = test_of_question.split(":").first%>
+  <%test_of_question.slice! qs+":"%>
+  <%ans = test_of_question.split(",").first%>
    <%test_of_question.slice! ans +","%>
    <div class="quiz-container" id="quiz1">
- <%@question.each do |question|%> 
- <%if qs.include? question.id.to_s%>
- <%user_ans = ans%>
-<%count = count+1%>
-
-    <div class="quiz-header">
-      <td>Question Number <%=count%>:<%= question.quetion %></td>
-      <ul>
-         <li>
-          <td>A.<%=question.a1%></td>
-            <%if question.ans.eql? "1"  %> 
-              <%= image_tag "true.jpg", class: "image_size", size: "5x5" %>
-            <%else%>
-              <%if user_ans.eql? "1"%>
-               <%= image_tag "xdo.jpg", class: "image_size" %> 
-            <%end%>
-              <%end%>
-                <%if user_ans.eql? "not anser"%>
-              <%= image_tag "xdo.jpg", class: "image_size" %> 
-              <%end%>
-        <li>
-          <td>B.<%= question.a2 %></td>
-             <%if question.ans.eql? "2"  %> 
-            <%= image_tag "true.jpg", class: "image_size" %> 
-             <%else%>
-              <%if user_ans.to_s.eql? "2"%>
-                 <%= image_tag "xdo.jpg", class: "image_size" %> 
-                 <%end%>
-             <%end%>
-               <%if user_ans.eql? "not anser"%>
-              <%= image_tag "xdo.jpg", class: "image_size" %> 
-              <%end%>
-        </li>
-        <li>
-            <td>C.<%=question.a3%>  </td>
-             <%if question.ans.eql? "3"  %> 
-              <%= image_tag "true.jpg", class: "image_size" %> 
-              <%else%>
-              <%if user_ans.to_s.eql? "3"%>
-                <%= image_tag "xdo.jpg", class: "image_size" %> 
-       <%end%>
-             <%end%>
-               <%if user_ans.eql? "not anser"%>
-              <%= image_tag "xdo.jpg", class: "image_size" %> 
-              <%end%>
-        </li>
-        <li>
-          <td>D.<%= question.a4 %></td>
-             <%if question.ans.eql? "4"  %>            
-               <%= image_tag "true.jpg", class: "image_size" %> 
-              <%else%>
-              <%end%>
-              <%if user_ans.to_s.eql? "4"%>
-               <%= image_tag "xdo.jpg", class: "image_size" %> 
-             <%end%>
-                <%if user_ans.eql? "not anser"%>
-              <%= image_tag "xdo.jpg", class: "image_size" %> 
-              <%end%>
-        </li>   
+  
+<%@question.each do |question|%> 
     
-          <%if question.answer.any?%>
-          <% question.answer.each do |ans| %>
-          <%byebug%>
-          <li>
-            <td><%=ans.moreans %></td>
-              <%if question.ans.eql? "4"  %>            
-                <%= image_tag "true.jpg", class: "image_size" %> 
+  <%if qs.include? question.id.to_s%>
+    <%user_ans = ans%>
+    <%count = count +1%>
+    <div class="quiz-container" id="quiz"> 
+    <div class="quiz-header">
+    <div style="font-weight: bold; font-size : 1.25em">Question Number <%=count%>:<br> </div>
+    <div><%= question['quetion'] %></div>
+    <ul> 
+
+    <%if question.answer.any?%>
+      <% question.answer.each do |ans| %>  
+        <td>
+            <%if ans.check %>
+              <%color = "green"%>
+              <%if ans.id.to_s.eql? user_ans%>
+              <%end%>
+            <%else%>
+              <%if !user_ans.eql? "not anser" or ans.id.to_s.eql? user_ans%>
+                <%color = "red"%>
               <%else%>
+                <%color = "black"%>
               <%end%>
-              <%if user_ans.to_s.eql? "4"%>
-                <%= image_tag "xdo.jpg", class: "image_size" %> 
-             <%end%>
-                <%if user_ans.eql? "not anser"%>
-                <%= image_tag "xdo.jpg", class: "image_size" %> 
-              <%end%>
-            </li>
-          <%end%>
-        <%end%>
-      
-      </ul>    
-        <%if !test_of_question.eql? ""%>
-       <%qs = test_of_question.split(":").first%>
-       <%test_of_question.slice! qs+":"%>
- <%ans = test_of_question.split(",").first%>
-   <%test_of_question.slice! ans +","%> 
+            <%end%> 
+            <p style="color:<%=color%>"> <%= ans.moreans %></p> 
+        </td>   
       <%end%>
-     <%end%>
-      </div>
-     <%end%>
+      </ul>   
+    <%end%>
+        </div>
+    </div>
+      <%if !test_of_question.eql? ""%>
+      <%qs = test_of_question.split(":").first%>
+      <%test_of_question.slice! qs+":"%>
+      <%ans = test_of_question.split(",").first%>
+      <%test_of_question.slice! ans +","%> 
+    <%end%>
+  <% end %>
+<%end%>
+</div>
+ 
     
   </p>
 </div>

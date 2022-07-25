@@ -1,48 +1,72 @@
-<%= form_with(model: @question , local: true, mothod: :GET, url: { action: "create" } ) do |f| %> 
+<%= form_with(model: @question , local: true, mothod: :GET, url: { action: "create" }) do |f| %> 
 <%count =4%>
 <h2>Enter user details</h2>
    <div>
     <%= f.label :quetion, style: "display: block" %>
     <%= f.text_field :quetion %>
-  </div>
-
-  <div>
-    <%= f.label :a1, style: "display: block" %>
-    <%= f.text_field :a1 %>
-  </div>
-
-  <div>
-    <%= f.label :a2, style: "display: block" %>
-    <%= f.text_field :a2 %>
-  </div>
-
-  <div>
-    <%= f.label :a3, style: "display: block" %>
-    <%= f.text_field :a3 %>
-  </div>
-
-  <div>
-    <%= f.label :a4, style: "display: block" %>
-    <%= f.text_field :a4 %>
-  </div>
-
- <div>
-    <%= f.label :role, style: "display: block" %>
-    <%= f.text_field :role %>
-  </div>
-<div>
-  <%= f.label :level, style: "display: block" %>
-  <%= f.select :level, options_for_select([["ez", "ez"], ["normal", "normal"],["hard", "hard"],["very hard", "very hard"]]) %>
-  </div>
-  <div>
-  <%= f.label :ans, style: "display: block" %>
-  <%= f.select :ans, options_for_select([["1", "1"], ["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"],["8","8"]]) %>
-  </div>
+  </div>  
+  <div class="nested-fields">
+   <%= f.fields_for :answer, Answer.new do |b| %>
+      <%= b.label "ans" , style: "display: block"%>
+      <%= b.text_field :moreans %>
+      <%= b.check_box :check , name: "1" %>
+      <%= b.hidden_field :_destroy %>
+    <% end %>
+</div>
+  <div class="nested-fields">
+   <%= f.fields_for :answer, Answer.new do |b| %>
+      <%= b.label  "ans"  , style: "display: block"%>
+      <%= b.text_field :moreans %>
+      <%= b.check_box :check , name: "1"%>
+      <%= b.hidden_field :_destroy %>
+    <% end %>
+</div>
+  <div class="nested-fields">
+   <%= f.fields_for :answer, Answer.new do |b| %>
+      <%= b.label  "ans"  , style: "display: block"%>
+      <%= b.text_field :moreans %>
+      <%= b.check_box :check , name: "1"%>
+      <%= b.hidden_field :_destroy %>
+    <% end %>
+</div>
+  <div class="nested-fields">
+   <%= f.fields_for :answer, Answer.new do |b| %>
+      <%= b.label  "ans"  , style: "display: block"%>
+      <%= b.text_field :moreans %>
+      <%= b.check_box :check , name: "1"%>
+      <%= b.hidden_field :_destroy %>
+    <% end %>
+</div>  
 <div>
     <%=link_to_add_fields "Add answer", f, :answer %> 
 </div>
-
+<div>   
+  <div>
+    <%= f.label :role, style: "display: block" %>
+    <%= f.text_field :role %>
+  </div>
+  <div>
+    <%= f.label :level, style: "display: block" %>
+    <%= f.select :level, options_for_select([["ez", "ez"], ["normal", "normal"],["hard", "hard"],["very hard", "very hard"]]) %>
+  </div>
 <div>
   <%= f.submit %>
-</div>
+</div>  
 <% end %>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  $(function(){
+ var chks = $("#myForm input[type=checkbox]");
+ chks.on("change", function(){
+  if(this.checked){ //console.log(this.checked);
+   var me = this;
+   chks.each(function(i){ //console.log(me.id);
+   	if(me.id !== this.id){ //console.log(i.id);
+      $(this).prop("checked",false); 
+      }
+   });
+  }
+ });
+});
+  </script>

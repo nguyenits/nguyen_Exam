@@ -3,9 +3,9 @@ class QuestionController < ApplicationController
   def index
     @question_admin = Question.order(:id)
     id_of_question = Array.new
-    @question = Question.where(level: params[:level_Question], role: "params[:topic]").order("RANDOM()").limit(params[:Num_Question])
+    @question = Question.where(level: params[:level_Question], role: (params[:topic])).order("RANDOM()").limit(params[:Num_Question])
     @question.each do |question|  
-      id_of_question.push(question['id'].to_i)
+      id_of_question.push(question[:id].to_i)
     end
     @id_question  = id_of_question.sort
   end
@@ -69,7 +69,6 @@ class QuestionController < ApplicationController
     end
     # Only allow a list of trusted parameters through.
     def question_params
-   
-      params.require(:question).permit(:quetion, :a1, :a2, :a3, :a4, :ans, :role, :level, answer_attributes: [:moreans, :_destroy])
+      params.require(:question).permit(:quetion, :role, :level, answer_attributes: [:moreans,:check, :_destroy])
     end
 end

@@ -10,76 +10,91 @@ skips = Question.pluck(:id).count
 (100 - skips).times do |time|
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
-    a1: Faker::Lorem.paragraph_by_chars(number: 10),
-    a2: Faker::Lorem.paragraph_by_chars(number: 10),
-    a3: Faker::Lorem.paragraph_by_chars(number: 10),
-    a4: Faker::Lorem.paragraph_by_chars(number: 10),
-    ans: 3,
+ 
     level: "ez",
-    role: "xa hoi"
+    role: "xa hoi",
+    answer_attributes: [
+      {moreans: "A1", check: true},
+      {moreans: "A2", check: false},
+      {moreans: "A3", check: false},
+      {moreans: "A4", check: false},
+      {moreans: "A5", check: false}
+   ]
   )  
  
   question.save
 
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
-    a1: Faker::Lorem.paragraph_by_chars(number: 10),
-    a2: Faker::Lorem.paragraph_by_chars(number: 10),
-    a3: Faker::Lorem.paragraph_by_chars(number: 10),
-    a4: Faker::Lorem.paragraph_by_chars(number: 10),
-    ans: 1,
     level: "ez",
-    role: "tu nhien"
+    role: "tu nhien",
+    answer_attributes: [
+      {moreans: "A1", check: true},
+      {moreans: "A2", check: false},
+      {moreans: "A3", check: false},
+      {moreans: "A4", check: false},
+      {moreans: "A5", check: false}
+   ]
   )  
  
   question.save
 
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
-    a1: Faker::Lorem.paragraph_by_chars(number: 10),
-    a2: Faker::Lorem.paragraph_by_chars(number: 10),
-    a3: Faker::Lorem.paragraph_by_chars(number: 10),
-    a4: Faker::Lorem.paragraph_by_chars(number: 10),
-    ans: 2,
     level: "ez",
-    role: "esport"
+    role: "esport",
+    answer_attributes: [
+      {moreans: "A1", check: true},
+      {moreans: "A2", check: false},
+      {moreans: "A3", check: false},
+      {moreans: "A4", check: false},
+      {moreans: "A5", check: false}
+   ]
+    
   )  
  
   question.save
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
-    a1: Faker::Lorem.paragraph_by_chars(number: 10),
-    a2: Faker::Lorem.paragraph_by_chars(number: 10),
-    a3: Faker::Lorem.paragraph_by_chars(number: 10),
-    a4: Faker::Lorem.paragraph_by_chars(number: 10),
-    ans: 1,
     level: "normal",
-    role: "tu nhien"
+   
+    role: "tu nhien",
+    answer_attributes: [
+      {moreans: "A1", check: true},
+      {moreans: "A2", check: false},
+      {moreans: "A3", check: false},
+      {moreans: "A4", check: false},
+      {moreans: "A5", check: false}
+   ]
   )  
  
   question.save
 
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
-    a1: Faker::Lorem.paragraph_by_chars(number: 10),
-    a2: Faker::Lorem.paragraph_by_chars(number: 10),
-    a3: Faker::Lorem.paragraph_by_chars(number: 10),
-    a4: Faker::Lorem.paragraph_by_chars(number: 10),
-    ans: 2,
     level: "normal",
-    role: "esport"
+    role: "esport",
+    answer_attributes: [
+      {moreans: "A1", check: true},
+      {moreans: "A2", check: false},
+      {moreans: "A3", check: false},
+      {moreans: "A4", check: false},
+      {moreans: "A5", check: false}
+   ]
   )  
  
   question.save
   question1 = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
-    a1: Faker::Lorem.paragraph_by_chars(number: 10),
-    a2: Faker::Lorem.paragraph_by_chars(number: 10),
-    a3: Faker::Lorem.paragraph_by_chars(number: 10),
-    a4: Faker::Lorem.paragraph_by_chars(number: 10),
-    ans: 3,
     level: "normal",
-    role: "xa hoi"
+    role: "xa hoi",
+    answer_attributes: [
+      {moreans: "A1", check: true},
+      {moreans: "A2", check: false},
+      {moreans: "A3", check: false},
+      {moreans: "A4", check: false},
+      {moreans: "A5", check: false}
+   ]
   
   ) 
   
@@ -87,79 +102,92 @@ skips = Question.pluck(:id).count
 
   question2 = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
-    a1: Faker::Lorem.paragraph_by_chars(number: 10),
-    a2: Faker::Lorem.paragraph_by_chars(number: 10),
-    a3: Faker::Lorem.paragraph_by_chars(number: 10),
-    a4: Faker::Lorem.paragraph_by_chars(number: 10),
-    ans: 3,
     level: "hard",
-    role: "xa hoi"
+    role: "xa hoi",
+    answer_attributes: [
+      {moreans: "A1", check: true},
+      {moreans: "A2", check: false},
+      {moreans: "A3", check: false},
+      {moreans: "A4", check: false},
+      {moreans: "A5", check: false}
+   ]
   
   )  
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
-    a1: Faker::Lorem.paragraph_by_chars(number: 10),
-    a2: Faker::Lorem.paragraph_by_chars(number: 10),
-    a3: Faker::Lorem.paragraph_by_chars(number: 10),
-    a4: Faker::Lorem.paragraph_by_chars(number: 10),
-    ans: 1,
     level: "hard",
-    role: "tu nhien"
+    role: "tu nhien",
+    answer_attributes: [
+      {moreans: "A1", check: true},
+      {moreans: "A2", check: false},
+      {moreans: "A3", check: false},
+      {moreans: "A4", check: false},
+      {moreans: "A5", check: false}
+   ]
   )  
  
   question.save
 
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
-    a1: Faker::Lorem.paragraph_by_chars(number: 10),
-    a2: Faker::Lorem.paragraph_by_chars(number: 10),
-    a3: Faker::Lorem.paragraph_by_chars(number: 10),
-    a4: Faker::Lorem.paragraph_by_chars(number: 10),
-    ans: 2,
     level: "hard",
-    role: "esport"
+    role: "esport",
+    answer_attributes: [
+      {moreans: "A1", check: true},
+      {moreans: "A2", check: false},
+      {moreans: "A3", check: false},
+      {moreans: "A4", check: false},
+      {moreans: "A5", check: false}
+   ]
   )  
  
   question.save
   question2.save
   question3 = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
-    a1: Faker::Lorem.paragraph_by_chars(number: 10),
-    a2: Faker::Lorem.paragraph_by_chars(number: 10),
-    a3: Faker::Lorem.paragraph_by_chars(number: 10),
-    a4: Faker::Lorem.paragraph_by_chars(number: 10),
-    ans: 3,
     level: "very hard",
-    role: "xa hoi"
+    role: "xa hoi",
+    answer_attributes: [
+      {moreans: "A1", check: true},
+      {moreans: "A2", check: false},
+      {moreans: "A3", check: false},
+      {moreans: "A4", check: false},
+      {moreans: "A5", check: false}
+   ]
   
   )  
   question3.save
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
-    a1: Faker::Lorem.paragraph_by_chars(number: 10),
-    a2: Faker::Lorem.paragraph_by_chars(number: 10),
-    a3: Faker::Lorem.paragraph_by_chars(number: 10),
-    a4: Faker::Lorem.paragraph_by_chars(number: 10),
-    ans: 1,
     level: "very hard",
-    role: "tu nhien"
+    role: "tu nhien",
+    answer_attributes: [
+      {moreans: "A1", check: true},
+      {moreans: "A2", check: false},
+      {moreans: "A3", check: false},
+      {moreans: "A4", check: false},
+      {moreans: "A5", check: false}
+   ]
   )  
  
   question.save
 
   question = Question.new(
     quetion: Faker::Lorem.question(word_count: 50),
-    a1: Faker::Lorem.paragraph_by_chars(number: 10),
-    a2: Faker::Lorem.paragraph_by_chars(number: 10),
-    a3: Faker::Lorem.paragraph_by_chars(number: 10),
-    a4: Faker::Lorem.paragraph_by_chars(number: 10),
-    ans: 2,
     level: "very hard",
-    role: "esport"
+    role: "esport",
+    answer_attributes: [
+      {moreans: "A1", check: true},
+      {moreans: "A2", check: false},
+      {moreans: "A3", check: false},
+      {moreans: "A4", check: false},
+      {moreans: "A5", check: false}
+   ]
   )  
  
   question.save
 end
+
 
 user = User.new(
   email: "admin@gmail.com",

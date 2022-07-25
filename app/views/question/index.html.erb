@@ -1,4 +1,4 @@
-<% score = 0,count =0,countans = 4%>
+<% score = 0,count =0%>
 <header>
   <h1>Question</h1>
 </header>
@@ -13,41 +13,24 @@
 </div>
 <div class="test-continer">
  <%@question.each do |question|%> 
+ <%countans = 0%>
  <%if count < params["Num_Question"].to_i%>
  <%count = count +1%>
  <div class="quiz-container" id="quiz"> 
     <div class="quiz-header">
   <div style="font-weight: bold; font-size : 1.25em">Question Number <%=count%>:<br> </div>
-  <div>&emsp;<%= question['quetion'] %></div>
-      <ul>
-         <li>
-          <input type="radio" name="<%=question['id']%>" id="a" value= "1" class="answer">
-          <td><%= question['a1'] %></td>
-        </li>
-        <li>
-          <input type="radio" name="<%=question['id']%>" id="b" value= "2" class="answer">
-          <td><%= question['a2'] %></td>
-        </li>
-        <li>
-          <input type="radio" name="<%=question['id']%>" id="c" value= "3" class="answer">
-          <td><%= question['a3']%></td>
-        </li>
-        <li>
-          <input type="radio" name="<%=question['id']%>" id="d" value= "4" class="answer">
-          <td><%= question['a4'] %></td>
-        </li> 
+  <div><%= question['quetion'] %></div>
+      <ul> 
         <%if question.answer.any?%>
           <% question.answer.each do |ans| %>
           <li>
-          <%count =count +1%>
-          <input type="radio" name="<%=question['id']%>" id=<%=count%> value= <%=count%> class="answer">
+          <%countans =countans +1%>
+          <input type="radio" name="<%=question['id']%>" id=<%=countans%> value= <%=ans.id%> class="answer">
           <td><%=ans.moreans%></td>
           </li>
           <%end%>
         <%end%>
-     
       </ul>   
-
       <%end%>
         </div>
 </div>

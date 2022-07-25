@@ -1,8 +1,9 @@
 <header>
   <h1>Editing Question</h1>
 </header>
+
+<%= form_with model: @question ,local: true, mothod: :GET, url: { action: "update" } do |f| %> 
 <div class="editquestion-contanier">
-<%= form_with model: @question , url: { action: "update" } do |f| %> 
   <% if @question.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(@question.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -18,30 +19,16 @@
     <%= f.label :quetion, style: "display: block" %>
     <%= f.text_field :quetion %>
   </div>
+  <div>
 
-  <div>
-    <%= f.label :a1, style: "display: block" %>
-    <%= f.text_field :a1 %>
-  </div>
+    <%= f.fields_for :answer do |a| %>
+        <div class="field">
+            <%= a.label :moreans %>
+            <%= a.text_area :moreans %>
+            <%= a.check_box :check%>
+        </div>
+   <% end %>
 
-  <div>
-    <%= f.label :a2, style: "display: block" %>
-    <%= f.text_field :a2 %>
-  </div>
-
-  <div>
-    <%= f.label :a3, style: "display: block" %>
-    <%= f.text_field :a3 %>
-  </div>
-
-  <div>
-    <%= f.label :a4, style: "display:  block" %>
-    <%= f.text_field :a4 %>
-  </div>
-  <div>
-    <%= f.fields_for :answer do |answer_form| %>
-    <%= render "answer_fields", f: answer_form %> 
-    <% end %>
   </div>
  <div>
     <%= f.label :role, style: "display: block" %>
@@ -51,11 +38,6 @@
     <%= f.label :level, style: "display: block" %>
      <%= f.select :level, options_for_select([["ez", "ez"], ["normal", "normal"],["hard", "hard"]]) %>
   </div>
-<div>
-<%= f.label :ans, style: "display: block" %>
-<%= f.select :ans, options_for_select([["ans 1", "1"], ["ans 2", "2"],["ans 3", "3"],["ans 4", "4"]]) %>
-</div>
-
 </h2>
     <%= f.submit %>
   </div>

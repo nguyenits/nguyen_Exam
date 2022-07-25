@@ -1,47 +1,21 @@
-
-  <style type="questions.scss"> 
-
+<%count =1%>
   <p>
     <strong>question:</strong>
     <%= @question.quetion %>
   </p>
-  </style>
-  <p>
-      <strong>Ans 1:</strong>
-      <%= @question.a1 %>
-  </p>
-
-  <p>
-    <strong>Ans 2:</strong>
-    <%= @question.a2 %>
-  </p>
-
-  <p>
-    <strong>Ans 3:</strong>
-    <%= @question.a3 %>
-  </p>
-
-  <p>
-    <strong>Ans 4:</strong>
-    <%= @question.a4 %>
-  </p>
-<%count =5%>
-  <%if @question.answer.any?%>
+  <%if @question.answer.any?%>  
       <% @question.answer.each do |ans| %>
         <p>
-        <strong>Ans <%=count%>:</strong>
+        <%color = "black"%>
+        <%if ans.check ==true%> 
+          <%color = "green"%>
+        <%end%>
+        <strong> <p style="color:<%=color%>">ans <%=count%> : <%= ans.moreans %></p></strong>
         <%count = count +1%>
-        <%= ans.moreans %>
         </p>   
       <%end%>
     <%end%>
-
-  <p>
-    <strong> Anser:</strong>
-    <%= @question.ans %>
-  </p>
-  
-<p>
+  <p> 
     <strong> type:</strong>
     <%= @question.role %>
   </p>

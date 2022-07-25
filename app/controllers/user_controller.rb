@@ -1,5 +1,4 @@
 class UserController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new]
   before_action :set_user, only: %i[ show edit update destroy update_password ]
     def index
       if(current_user.id ==1)

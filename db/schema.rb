@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2022_07_13_082522) do
 
   create_table "answers", force: :cascade do |t|
     t.string "moreans"
+    t.boolean "check"
     t.bigint "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -33,11 +34,6 @@ ActiveRecord::Schema.define(version: 2022_07_13_082522) do
 
   create_table "questions", force: :cascade do |t|
     t.string "quetion"
-    t.string "a1"
-    t.string "a2"
-    t.string "a3"
-    t.string "a4"
-    t.string "ans"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "role"
