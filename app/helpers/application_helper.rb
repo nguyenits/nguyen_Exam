@@ -8,14 +8,14 @@ module ApplicationHelper
     # new_object = @person.send(:addresses).klass.new
     new_object = f.object.send(association).klass.new
 
-    # Saves the unique ID of the object into a variable. 
+    # Saves the unique ID of the object into  a variable. 
     # This is needed to ensure the key of the associated array is unique. This is makes parsing the content in the `data-fields` attribute easier through Javascript.
     # We could use another method to achive this.
     id = new_object.object_id
     # https://api.rubyonrails.org/ fields_for(record_name, record_object = nil, fields_options = {}, &block) 
     # record_name = :addresses
     # record_object = new_object
-    # fields_options = { child_index: id }
+    # fields_options = { child_i  ndex: id }
         # child_index` is used to ensure the key of the associated array is unique, and that it matched the value in the `data-id` attribute.
         # `person[addresses_attributes][child_index_value][_destroy]`
     fields = f.fields_for(association, new_object, child_index: id) do |builder|
@@ -33,5 +33,8 @@ module ApplicationHelper
         # We use `gsub("\n", "")` to remove anywhite space from the rendered partial.
     # The `id:` value needs to match the value used in `child_index: id`.
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
+  end
+  def add_to_question(testofuser)
+    testofuser.idofuser = "admin"
   end
 end

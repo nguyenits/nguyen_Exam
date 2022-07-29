@@ -2,7 +2,7 @@ class User < ApplicationRecord
   attr_accessor :login
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
+  has_many :testofuser
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.id).first_or_create do |user|

@@ -1,14 +1,14 @@
 <%= form_with(model: @question , local: true, mothod: :GET, url: { action: "create" }) do |f| %> 
- <% if @question.errors.any? %>
+ <%if @question.errors.any?%>
     <div style="color: red">
       <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
       <ul>
-        <% @question.errors.each do |error| %>
+        <%@question.errors.each do |error|%>  
           <li><%= error.full_message %></li>
-        <% end %>
+        <%end%>
       </ul>
     </div>
-  <% end %>
+  <%end%>
 <%count =4%>
 <h2>Enter user details</h2>
    <div>
@@ -55,17 +55,9 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript">
-  $(function(){
- var chks = $("#myForm input[type=checkbox]");
- chks.on("change", function(){
-  if(this.checked){ //console.log(this.checked);
-   var me = this;
-   chks.each(function(i){ //console.log(me.id);
-   	if(me.id !== this.id){ //console.log(i.id);
-      $(this).prop("checked",false); 
-      }
-   });
-  }
- });
+var $check_boxes = $('input[type=checkbox]');
+$check_boxes.click(function() {
+  $check_boxes.prop('checked', false);
+  $(this).prop('checked', true);
 });
 </script>
