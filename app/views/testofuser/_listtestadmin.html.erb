@@ -11,7 +11,7 @@
    </tr>
       <% @testofuserforadmin.each do |testofuser| %>
       <tr class="tes_user">
-        <%user = User.find(testofuser['userID'].to_i)%>
+        <%user = User.find(testofuser['idofuser'].to_i)%>
         <td><%=user.username%> </td>
         <td><%=user.email%> </td>
         <td><%= testofuser['topic'] %></td>

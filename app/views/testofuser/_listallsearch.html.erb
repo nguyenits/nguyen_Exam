@@ -1,28 +1,45 @@
 <div style="padding: 2em 4em;">
 <table>
-   <%if current_user.role== "admin" %>
-   <tr class="tes_user">
-     <th>username</th>
-     <th>email</th>
-     <th>topic</th>
-     <th>score</th> 
-     <th>created_at</th>
-     <th></th>
-   </tr>
-       <% @user.each do |user| %>
-      <%@testofuser = Testofuser.where(userID: user.id )%>
+  <%if current_user.role== "admin" %>
+    <tr class="tes_user">
+      <th>username</th>
+      <th>email</th>
+      <th>topic</th>
+      <th>score</th> 
+      <th>created_at</th>
+      <th></th>
+    </tr>
+    <%if @user.present?%>
+      <% @user.each do |user| %>
+        <%@testofuser = Testofuser.where(idofuser: user.id )%>
         <% @testofuser.each do |testofuser| %>
-        <tr class="tes_user">
+          <tr class="tes_user">
           <td><%=user.username%> </td>
           <td><%=user.email%> </td>
           <td><%= testofuser[:topic] %></td>
           <td><%= testofuser['score'].to_f.round(2) %></td>
           <td><%=testofuser['created_at']%>
           <td><%= link_to 'Show', testofuser_path(testofuser['id'])%></td>
-        </tr>
-        <% end %>
-    <% end %>
-   <%else%>
+          </tr>
+        <%end%>
+      <%end%>
+    <%else%>
+
+      <% @testofuser.each do |testofuser| %>
+        <%@user = User.where(id: testofuser.idofuser )%>
+        <% @user.each do |user| %>
+          <tr class="tes_user">
+          <td><%=user.username%> </td>
+          <td><%=user.email%> </td>
+          <td><%= testofuser[:topic] %></td>
+          <td><%= testofuser['score'].to_f.round(2) %></td>
+          <td><%=testofuser['created_at']%>
+          <td><%= link_to 'Show', testofuser_path(testofuser['id'])%></td>
+          </tr>
+        <%end%>
+      <%end%>
+    <%end%>
+  <%else%>
  <tr class="tes_user">
   <th>topic</th>
     <th>created_at</th>

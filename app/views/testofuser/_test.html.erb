@@ -1,4 +1,5 @@
   <%count=0%>
+  
   <% test_of_question = @testofuser.test %>
   <h2>Your Score: <%=@testofuser.score.to_f.round(2)%></h2>
   <%qs = test_of_question.split(":").first%>

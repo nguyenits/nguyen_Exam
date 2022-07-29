@@ -1,7 +1,7 @@
 class TestofuserController < ApplicationController
   before_action :set_testofuser, only: %i[ show edit update destroy ]
     def index
-      @testofuser = Testofuser.where(userID: current_user.id)
+      @testofuser = Testofuser.where(idofuser: current_user.id)
       scrip = " SELECT * FROM testofusers  ORDER BY CAST(score AS FLOAT) desc"
       @testofuserforadmin =  ActiveRecord::Base.connection.exec_query(scrip).to_a  
       @User = User.order(:id)
@@ -12,9 +12,10 @@ class TestofuserController < ApplicationController
 
     def search
       if (current_user.id ==1)
+        @testofuser = Testofuser.where("topic LIKE? ","%"+params[:q]+"%") 
         @user = User.where("username LIKE?","%"+params[:q]+"%") 
       else
-        @testofuser = Testofuser.where("topic LIKE?","%"+params[:q]+"%") 
+        @testofuser = Testofuser.where("topic LIKE? and idofuser LIKE?","%"+params[:q]+"%","%"+current_user.id.to_s+"%") 
       end
 
     end
@@ -70,7 +71,7 @@ class TestofuserController < ApplicationController
       end
       # Only allow a list of trusted parameters through.
       def question_params
-        params.require(:testofuser).permit(:UserID, :test, :score)
+        params.require(:testofuser).permit(:id,:idofuser, :test, :score,:topic)
       end
   end
   
