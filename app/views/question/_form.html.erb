@@ -49,6 +49,7 @@
     <%= f.label :level, style: "display: block" %>
     <%= f.select :level, options_for_select([["ez", "ez"], ["normal", "normal"],["hard", "hard"],["very hard", "very hard"]]) %>
   </div>
+  <%= f.hidden_field :Belongto , :value => current_user.username  %>
 <div>
   <%= f.submit %>
 </div>  

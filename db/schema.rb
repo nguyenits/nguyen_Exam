@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_13_082522) do
+ActiveRecord::Schema.define(version: 2022_07_25_034140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,12 +32,19 @@ ActiveRecord::Schema.define(version: 2022_07_13_082522) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
+  create_table "questionofusers", force: :cascade do |t|
+    t.string "quetion"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "quetion"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "role"
     t.string "level"
+    t.string "Belongto"
   end
 
   create_table "test_of_users", force: :cascade do |t|
