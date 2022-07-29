@@ -18,13 +18,12 @@
           <td><%=user.email%> </td>
           <td><%= testofuser[:topic] %></td>
           <td><%= testofuser['score'].to_f.round(2) %></td>
-          <td><%=testofuser['created_at']%>
+          <td><%= testofuser['created_at']%>
           <td><%= link_to 'Show', testofuser_path(testofuser['id'])%></td>
           </tr>
         <%end%>
       <%end%>
     <%else%>
-
       <% @testofuser.each do |testofuser| %>
         <%@user = User.where(id: testofuser.idofuser )%>
         <% @user.each do |user| %>
@@ -40,8 +39,8 @@
       <%end%>
     <%end%>
   <%else%>
- <tr class="tes_user">
-  <th>topic</th>
+  <tr class="tes_user">
+    <th>topic</th>
     <th>created_at</th>
     <th>score</th>
     <th></th>

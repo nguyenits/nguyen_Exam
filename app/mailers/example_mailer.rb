@@ -1,8 +1,8 @@
 class ExampleMailer < ApplicationMailer
-  default from: "nguyenexamits@gmail.com"
+  default from: "nguyenitsexam@gmail.com"
 
   def sample_email user
     @user = user
-    mail to: @user.email, subject: "you just done the test"
+    mail from: "nguyenitsexam@gmail.com", to: @user.email, subject: "you just done the test"
   end
 end
