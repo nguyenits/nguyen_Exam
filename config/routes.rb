@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       get "ScoreQuestion"
       get "admin_indexquestion"
       get "user_indexquestion"
+      get "add_userquestion"
     end
   end
   resources :testofuser do

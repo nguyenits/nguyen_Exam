@@ -28,24 +28,6 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.action_mailer.perform_deliveries = true
-config.action_mailer.raise_delivery_errors = true
-config.action_mailer.preview_path = "#{Rails.root}/tmp/mailers/previews"
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  address: 'smtp.example.com',
-  port: 1025,
-  domain: 'example.com',
-  user_name: 'nguyenexamits@gmail.com',
-  password: 'nguyen23012301',
-  authentication: 'plain',
-  enable_starttls_auto: true
-}
-config.action_mailer.default_url_options = {
-  host: '',
-  port: 1025,
-  protocol: 'http'
-}
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = 'http://assets.example.com'
 

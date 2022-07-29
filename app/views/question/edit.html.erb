@@ -4,22 +4,33 @@
 
 <%= form_with model: @question ,local: true, mothod: :POST, url: { action: "update" } do |f| %> 
 <div class="editquestion-contanier">
+<% if @question.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+        <% @question.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 <h2>Enter user details</h2>
-   <div>
+  <div>
     <%= f.label :quetion, style: "display: block" %>
     <%= f.text_field :quetion %>
   </div>
   <div>
   <div class="nested-fields">
-   <%= f.fields_for :answer do |b| %>
-      <%= b.label  "ans"  , style: "display: block"%>
-      <%= b.text_field :moreans %>
-      <%= b.check_box :check %>
-      <%= b.hidden_field :_destroy %>
-    <% end %>
+  <%= f.fields_for :answer do |b| %>
+    <%render("answer_fields", f: b)%>
+  <%end%>
 </div>  
   </div>
+  <div>
+    <%=link_to_add_fields "Add answer", f, :answer %> 
+</div>
  <div>
     <%= f.label :role, style: "display: block" %>
     <%= f.text_field :role %>

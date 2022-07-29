@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_034140) do
   end
 
   create_table "test_of_users", force: :cascade do |t|
-    t.string "userID"
+    t.string "idofuser"
     t.string "test"
     t.string "score"
     t.datetime "created_at", precision: 6, null: false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_034140) do
   end
 
   create_table "testofusers", force: :cascade do |t|
-    t.string "userID"
+    t.string "idofuser"
     t.string "test"
     t.string "score"
     t.datetime "created_at", precision: 6, null: false
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_034140) do
   end
 
   create_table "tests", force: :cascade do |t|
-    t.integer "UserID"
+    t.integer "idofuser"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

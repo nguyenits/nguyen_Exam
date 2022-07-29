@@ -1,7 +1,6 @@
 <header>
   <h1>Your Test</h1>
 </header>
-<p id="notice"><%= notice %></p>
 <%anser = String.new%>
 <%id_of_question = params[:id_of_question]%>
 <%= hidden_field_tag :remaining_time, @remaining_time %>
@@ -46,11 +45,11 @@
     </div>
   <% end %>
   <%test_of_users = Testofuser.new()%>
-  <%test_of_users.userID = current_user.id.to_s%>
+  <%test_of_users.idofuser = current_user.id.to_s%>
   <%test_of_users.test = anser%>
   <%test_of_users.score = score.round(2)%>
   <%test_of_users.topic = params[:topic]%>
-  <%test_of_users.save%>
+  <%test_of_users.save%>  
   <%ExampleMailer.sample_email(current_user).deliver_now%>
 <h1>your score: <%=score.round(2)%></h1>
 <%= link_to 'Do it again', question_index_path(:Num_Question => params["num_of_question"]) %>
